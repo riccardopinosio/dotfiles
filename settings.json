@@ -1,0 +1,9 @@
+{
+    "liveServer.settings.donotShowInfoMsg": true,
+    "remote.SSH.defaultExtensions": [
+        "ms-python.python"
+    ],
+    "python.pythonPath": "/usr/local/anaconda3/bin/python",
+    "terminal.integrated.inheritEnv": false,
+    "window.zoomLevel": 0
+}
