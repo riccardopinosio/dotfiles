@@ -1,0 +1,11 @@
+alias ll='ls -la'
+
+alias gb='git branch'
+alias gc='git checkout'
+alias gs='git status'
+
+export PATH="/usr/local/anaconda3/bin:$PATH"
+export CONDA_HOME="/usr/local/anaconda3"
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
