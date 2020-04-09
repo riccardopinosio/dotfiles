@@ -1,1 +1,3 @@
-{{ .chezmoi.sourceDir }}/settings.json
+{{- if eq .chezmoi.os "linux"}}
+	{{ .chezmoi.sourceDir }}/settings.json
+{{- end}}
