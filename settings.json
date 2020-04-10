@@ -5,5 +5,7 @@
     ],
     "python.pythonPath": "/usr/local/anaconda3/bin/python",
     "terminal.integrated.inheritEnv": false,
-    "window.zoomLevel": 0
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "window.zoomLevel": 0,
+    "terminal.integrated.shell.osx": "/bin/zsh"
 }
