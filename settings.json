@@ -11,5 +11,6 @@
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "explorer.sortOrder": "type",
-    "files.trimFinalNewlines": true 
+    "files.trimFinalNewlines": true,
+    "editor.cursorBlinking": "solid"
 }
