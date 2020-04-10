@@ -7,5 +7,9 @@
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.fontFamily": "MesloLGS NF",
     "window.zoomLevel": 0,
-    "terminal.integrated.shell.osx": "/bin/zsh"
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "explorer.sortOrder": "type",
+    "files.trimFinalNewlines": true 
 }
