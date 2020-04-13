@@ -7,8 +7,13 @@ alias gc='git checkout'
 alias gs='git status'
 
 # python
+{{ if eq .chezmoi.os "linux" -}}
+export PATH="$HOME/miniconda/bin:$PATH"
+export CONDA_HOME="$HOME:/miniconda"
+{{ else if eq .chezmoi.os "darwin" -}}
 export PATH="/usr/local/anaconda3/bin:$PATH"
 export CONDA_HOME="/usr/local/anaconda3"
+{{ end -}}
 
 #locales
 export LANG=en_US.UTF-8

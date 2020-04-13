@@ -1,5 +1,6 @@
 settings.json
 fonts
+windows_settings.json
 
 # macos prefs
 {{ if ne .chezmoi.os "darwin" -}}
