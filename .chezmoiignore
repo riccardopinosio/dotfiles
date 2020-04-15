@@ -23,3 +23,7 @@ Library
 .bash_profile
 .zshrc
 {{ end }}
+
+{{ if ne .chezmoi.os "windows" -}}
+AppData
+{{ end }}
