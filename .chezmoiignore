@@ -1,2 +1,25 @@
 settings.json
 fonts
+
+# macos prefs
+{{ if ne .chezmoi.os "darwin" -}}
+Library
+{{ end }}
+
+# linux prefs
+{{ if ne .chezmoi.os "linux" -}}
+.config
+{{ end }}
+
+# windows prefs
+{{ if eq .chezmoi.os "windows" -}}
+.vimrc
+.config
+Library
+.oh-my-zsh
+.p10k.zsh
+.zprofile
+.bashrc
+.bash_profile
+.zshrc
+{{ end }}
