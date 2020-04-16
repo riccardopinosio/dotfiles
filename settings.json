@@ -12,5 +12,8 @@
     "editor.fontLigatures": true,
     "explorer.sortOrder": "type",
     "files.trimFinalNewlines": true,
-    "editor.cursorBlinking": "solid"
+    "editor.cursorBlinking": "solid",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "python.dataScience.askForKernelRestart": false,
+    "remote.SSH.suppressWindowsSshWarning": true
 }
