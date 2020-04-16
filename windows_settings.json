@@ -1,0 +1,20 @@
+{
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "terminal.integrated.inheritEnv": false,
+    "window.zoomLevel": 0,
+    "python.dataScience.askForKernelRestart": false,
+    "python.pythonPath": "C:\\Users\\RiccardoPinosio\\Anaconda3\\python.exe",
+    "git.ignoreLegacyWarning": true,
+    "git.ignoreMissingGitWarning": true,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDragAndDrop": false,
+    "remote.SSH.suppressWindowsSshWarning": true,
+    "remote.SSH.remotePlatform": {
+        "recommender": "linux"
+    },
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "editor.fontFamily": "Fira Code",
+    "editor.cursorBlinking": "solid",
+    "editor.fontLigatures": true
+}
