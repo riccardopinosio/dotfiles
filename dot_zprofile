@@ -1,6 +1,5 @@
 # shortcuts
 alias ll='ls -la'
-alias chezmoi=$HOME/bin/chezmoi
 
 # git shortcuts
 alias gb='git branch'
