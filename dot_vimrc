@@ -1,3 +1,2 @@
 " make sure that rows can be yanked to clipboard without specifying the register (e.g. using ")
 set clipboard=unnamedplus
-syntax on

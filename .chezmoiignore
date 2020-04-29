@@ -1,6 +1,7 @@
-settings.json
+vscode_settings.json
 fonts
-windows_settings.json
+vscode_windows_settings.json
+rstudio_user_settings
 
 # macos prefs
 {{ if ne .chezmoi.os "darwin" -}}

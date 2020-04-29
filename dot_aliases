@@ -1,0 +1,6 @@
+alias ll='ls -la'
+
+alias gb='git branch'
+alias gc='git checkout'
+alias gs='git status'
+alias onedrive="cd /mnt/c/Users/RiccardoPinosio/'OneDrive - Altius'"
