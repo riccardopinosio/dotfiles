@@ -31,7 +31,9 @@ There are two things you can do about this warning:
  '(fci-rule-color "#d6d6d6")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(frame-background-mode (quote light))
- '(package-selected-packages (quote (color-theme-sanityinc-tomorrow evil)))
+ '(package-selected-packages
+   (quote
+    (ein pyenv-mode-auto pyvenv pyenv-mode company-anaconda company anaconda-mode color-theme-sanityinc-tomorrow evil)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -140,3 +142,21 @@ There are two things you can do about this warning:
 (define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
 (define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 
+;; python stuff
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(eval-after-load "company"
+'(add-to-list 'company-backends 'company-anaconda))
+
+(add-hook 'python-mode-hook 'anaconda-mode)
+
+;; ipython
+;; Use IPython for REPL
+
+(setq python-shell-interpreter "ipython")
+(setq python-shell-interpreter-args "--simple-prompt -i")
+
+;; ein for jupyter
+(require 'ein)
+(require 'ein-notebook)
