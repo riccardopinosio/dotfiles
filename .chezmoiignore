@@ -2,6 +2,8 @@ vscode_settings.json
 fonts
 vscode_windows_settings.json
 rstudio_user_settings
+# emacs prefs folder is managed as symlink
+emacs.d
 
 # macos prefs
 {{ if ne .chezmoi.os "darwin" -}}
