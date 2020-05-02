@@ -6,7 +6,7 @@
     "python.pythonPath": "/usr/local/anaconda3/bin/python",
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "Fira Code semiBold",
     "editor.cursorBlinking": "solid",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,

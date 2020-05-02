@@ -14,7 +14,7 @@
         "recommender": "linux"
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "Fira Code semiBold",
     "editor.cursorBlinking": "solid",
     "editor.fontLigatures": true
 }
