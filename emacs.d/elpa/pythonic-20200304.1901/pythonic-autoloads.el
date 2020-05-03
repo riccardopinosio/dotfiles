@@ -6,8 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "pythonic" "pythonic.el" (0 0 0 0))
-;;; Generated autoloads from pythonic.el
+;;;### (autoloads nil "pythonic" "../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic.el"
+;;;;;;  "8f25840af308cb5756e50e30fae0f6cc")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic.el
 
 (autoload 'pythonic-activate "pythonic" "\
 Activate python VIRTUALENV.
@@ -18,8 +19,20 @@ Activate python VIRTUALENV.
 Deactivate python virtual environment.
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "pythonic" "../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pythonic" '("pythonic-")))
+
+;;;***
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/pythonic-20200304.1901/pythonic.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

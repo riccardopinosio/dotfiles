@@ -6,8 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "pyvenv" "pyvenv.el" (0 0 0 0))
-;;; Generated autoloads from pyvenv.el
+;;;### (autoloads nil "pyvenv" "../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv.el"
+;;;;;;  "5fa3727c2ac329b621f815d22c8f628b")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv.el
 
 (autoload 'pyvenv-activate "pyvenv" "\
 Activate the virtual environment in DIRECTORY.
@@ -68,8 +69,20 @@ buffer-local `pyvenv-workon' or `pyvenv-activate' variable.
 Restart Python inferior processes.
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "pyvenv" "../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pyvenv" '("pyvenv-")))
+
+;;;***
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/pyvenv-20191202.1039/pyvenv.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

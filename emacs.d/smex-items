@@ -1,0 +1,17 @@
+
+;; ----- smex-history -----
+(
+ fira-code-mode
+ color-theme-sanityinc-tomorrow-night
+ R
+ cd
+ 5x5
+ arp
+ dbx
+)
+
+;; ----- smex-data -----
+(
+ (color-theme-sanityinc-tomorrow-night . 1)
+ (fira-code-mode . 1)
+)

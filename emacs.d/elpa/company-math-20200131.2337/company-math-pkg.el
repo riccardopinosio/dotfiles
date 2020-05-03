@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "company-math" "20200131.2337" "Completion backends for unicode math symbols and latex tags" '((company "0.8.0") (math-symbol-lists "1.3")) :commit "a796053590012e6a15c8b527b521ffc15d137bd0" :keywords '("unicode" "symbols" "completion") :authors '(("Vitalie Spinu" . "spinuvit@gmail.com")) :maintainer '("Vitalie Spinu" . "spinuvit@gmail.com") :url "https://github.com/vspinu/company-math")

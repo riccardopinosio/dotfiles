@@ -87,16 +87,10 @@
         unfill
         company
         company-math
-        company-anaconda
-        anaconda-mode
-        pyvenv
         web-mode
         markdown-mode
         pandoc-mode
         ess
-        jupyter
-        evil
-        color-theme-sanityinc-tomorrow
         polymode
         poly-R
         poly-markdown
@@ -107,7 +101,12 @@
         dumb-jump
         htmlize
         dictionary
-        untitled-new-buffer))
+        untitled-new-buffer
+        anaconda-mode
+        pyvenv
+        jupyter
+        color-theme-sanityinc-tomorrow
+        evil))
 
 ;; hide compilation buffer when complete
 ;; from http://emacs.stackexchange.com/questions/62/hide-compilation-window
@@ -1245,11 +1244,10 @@ Will prompt you shell name when you type `C-u' before this command."
   (package-install-selected-packages))
 
 
-
 " nil custom-file))
-(load custom-file 'noerror)
+  (load custom-file 'noerror)
 
-;; evil mode
+  ;; evil mode
 (require 'evil)
 (evil-mode 1)
 

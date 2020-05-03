@@ -6,8 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "simple-httpd" "simple-httpd.el" (0 0 0 0))
-;;; Generated autoloads from simple-httpd.el
+;;;### (autoloads nil "simple-httpd" "../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd.el"
+;;;;;;  "4bab2bddb7d86f6cbc13ed2272f6b9c8")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd.el
 
 (autoload 'httpd-start "simple-httpd" "\
 Start the web server process. If the server is already
@@ -30,8 +31,21 @@ Return non-nil if the simple-httpd server is running.
 Start the web server with given `directory' as `httpd-root'.
 
 \(fn DIRECTORY)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "simple-httpd"
+;;;;;;  "../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "simple-httpd" '("httpd" "defservlet" "with-httpd-buffer")))
+
+;;;***
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/simple-httpd-20191103.1446/simple-httpd.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

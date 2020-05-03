@@ -6,133 +6,153 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "jupyter-base" "jupyter-base.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-base.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-base"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-base.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-base.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-base" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-channel" "jupyter-channel.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from jupyter-channel.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-channel"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-channel" '("jupyter-channel")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-channel-ioloop" "jupyter-channel-ioloop.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-channel-ioloop"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-channel-ioloop.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-channel-ioloop" '("jupyter-channel-ioloop")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-channel-ioloop-comm" "jupyter-channel-ioloop-comm.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-channel-ioloop-comm"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop-comm.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-channel-ioloop-comm.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop-comm.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-channel-ioloop-comm" '("jupyter-channel-ioloop-comm")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-client" "jupyter-client.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from jupyter-client.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-client"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-client.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-client.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-client" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-comm-layer" "jupyter-comm-layer.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-comm-layer"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-comm-layer.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-comm-layer.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-comm-layer.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-comm-layer" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-env" "jupyter-env.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-env.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-env"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-env.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-env.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-env" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-ioloop" "jupyter-ioloop.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from jupyter-ioloop.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-ioloop"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-ioloop" '("jupyter-ioloop")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-ioloop-comm" "jupyter-ioloop-comm.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-ioloop-comm"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop-comm.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-ioloop-comm.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop-comm.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-ioloop-comm" '("jupyter-ioloop-comm")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-julia" "jupyter-julia.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-julia.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-julia"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-julia.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-julia.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-julia" '("jupyter-julia-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-kernel-manager" "jupyter-kernel-manager.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-kernel-manager"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-manager.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-kernel-manager.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-manager.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-kernel-manager" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-kernel-process-manager" "jupyter-kernel-process-manager.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-kernel-process-manager"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-process-manager.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-kernel-process-manager.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-process-manager.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-kernel-process-manager" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-kernelspec" "jupyter-kernelspec.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-kernelspec"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernelspec.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-kernelspec.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernelspec.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-kernelspec" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-messages" "jupyter-messages.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from jupyter-messages.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-messages"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-messages.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-messages.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-messages" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-mime" "jupyter-mime.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-mime.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-mime"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-mime.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-mime.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-mime" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-org-client" "jupyter-org-client.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-org-client"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-client.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-org-client.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-client.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-org-client" '("jupyter-org-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-org-extensions" "jupyter-org-extensions.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-org-extensions.el
+;;;### (autoloads nil "jupyter-org-extensions" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-extensions.el"
+;;;;;;  "b65a0568a3c647bb185b450159e584d4")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-extensions.el
 
 (autoload 'jupyter-org-insert-src-block "jupyter-org-extensions" "\
 Insert a src-block above `point'.
@@ -297,13 +317,21 @@ Clear all results in the buffer.
 Interrupt the kernel.
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-org-extensions"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-extensions.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-extensions.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-org-extensions" '("jupyter-org-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "jupyter-repl" "jupyter-repl.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-repl.el
+;;;### (autoloads nil "jupyter-repl" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-repl.el"
+;;;;;;  "76b4ac56643e4a4ba2993c55152c5067")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-repl.el
 
 (autoload 'jupyter-repl-associate-buffer "jupyter-repl" "\
 Associate the `current-buffer' with a REPL CLIENT.
@@ -381,22 +409,30 @@ Return the REPL client connected to the kernel.  When called
 interactively, DISPLAY the new REPL buffer as well.
 
 \(fn FILE-OR-PLIST &optional REPL-NAME ASSOCIATE-BUFFER CLIENT-CLASS DISPLAY)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-repl"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-repl.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-repl.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-repl" '("jupyter-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "jupyter-rest-api" "jupyter-rest-api.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from jupyter-rest-api.el
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-rest-api"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-rest-api.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-rest-api.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-rest-api" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-server" "jupyter-server.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from jupyter-server.el
+;;;### (autoloads nil "jupyter-server" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server.el"
+;;;;;;  "ff2634b94729c268f61b427cc6aa0eea")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server.el
 
 (autoload 'jupyter-server-launch-kernel "jupyter-server" "\
 Start a kernel on SERVER.
@@ -438,21 +474,30 @@ prefix argument otherwise the `jupyter-current-server' will be
 used.
 
 \(fn SERVER)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-server"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-server" '("jupyter-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "jupyter-server-ioloop" "jupyter-server-ioloop.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-server-ioloop"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server-ioloop.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-server-ioloop.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server-ioloop.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-server-ioloop" '("jupyter-server-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-tramp" "jupyter-tramp.el" (0 0 0 0))
-;;; Generated autoloads from jupyter-tramp.el
+;;;### (autoloads nil "jupyter-tramp" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-tramp.el"
+;;;;;;  "91d0ca33346b1bb99f82eecf20095d85")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-tramp.el
 
 (defconst jupyter-tramp-file-name-handler-alist '((add-name-to-file . tramp-handle-add-name-to-file) (copy-file . jupyter-tramp-copy-file) (delete-directory . jupyter-tramp-delete-directory) (delete-file . jupyter-tramp-delete-file) (directory-file-name . tramp-handle-directory-file-name) (directory-files . tramp-handle-directory-files) (directory-files-and-attributes . tramp-handle-directory-files-and-attributes) (dired-compress-file . ignore) (dired-uncache . tramp-handle-dired-uncache) (expand-file-name . jupyter-tramp-expand-file-name) (file-accessible-directory-p . tramp-handle-file-accessible-directory-p) (file-acl . ignore) (file-attributes . jupyter-tramp-file-attributes) (file-directory-p . jupyter-tramp-file-directory-p) (file-equal-p . tramp-handle-file-equal-p) (file-executable-p . tramp-handle-file-exists-p) (file-exists-p . tramp-handle-file-exists-p) (file-in-directory-p . tramp-handle-file-in-directory-p) (file-local-copy . jupyter-tramp-file-local-copy) (file-modes . tramp-handle-file-modes) (file-name-all-completions . jupyter-tramp-file-name-all-completions) (file-name-as-directory . tramp-handle-file-name-as-directory) (file-name-case-insensitive-p . tramp-handle-file-name-case-insensitive-p) (file-name-completion . tramp-handle-file-name-completion) (file-name-directory . tramp-handle-file-name-directory) (file-name-nondirectory . tramp-handle-file-name-nondirectory) (file-newer-than-file-p . tramp-handle-file-newer-than-file-p) (file-notify-add-watch . tramp-handle-file-notify-add-watch) (file-notify-rm-watch . tramp-handle-file-notify-rm-watch) (file-notify-valid-p . tramp-handle-file-notify-valid-p) (file-ownership-preserved-p . ignore) (file-readable-p . tramp-handle-file-exists-p) (file-regular-p . tramp-handle-file-regular-p) (file-remote-p . jupyter-tramp-file-remote-p) (file-selinux-context . tramp-handle-file-selinux-context) (file-symlink-p . jupyter-tramp-file-symlink-p) (file-system-info . ignore) (file-truename . tramp-handle-file-truename) (file-writable-p . jupyter-tramp-file-writable-p) (find-backup-file-name . ignore) (insert-directory . tramp-handle-insert-directory) (insert-file-contents . tramp-handle-insert-file-contents) (load . tramp-handle-load) (make-auto-save-file-name . tramp-handle-make-auto-save-file-name) (make-directory-internal . jupyter-tramp-make-directory-internal) (make-nearby-temp-file . tramp-handle-make-nearby-temp-file) (make-symbolic-link . tramp-handle-make-symbolic-link) (rename-file . jupyter-tramp-rename-file) (set-file-acl . ignore) (set-file-modes . ignore) (set-file-selinux-context . ignore) (set-file-times . ignore) (set-visited-file-modtime . tramp-handle-set-visited-file-modtime) (substitute-in-file-name . tramp-handle-substitute-in-file-name) (temporary-file-directory . tramp-handle-temporary-file-directory) (unhandled-file-name-directory . ignore) (vc-registered . ignore) (verify-visited-file-modtime . tramp-handle-verify-visited-file-modtime) (write-region . jupyter-tramp-write-region)) "\
 Alist of handler functions for Tramp Jupyter method.
@@ -492,50 +537,98 @@ attempt to authenticate the connection.  Raise an error if that
 fails.
 
 \(fn FILENAME)" nil nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-tramp"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-tramp.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-tramp.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-tramp" '("jupyter-tramp-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "jupyter-widget-client" "jupyter-widget-client.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-widget-client"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-widget-client.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-widget-client.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-widget-client.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-widget-client" '("httpd/jupyter" "jupyter-widget")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-zmq-channel" "jupyter-zmq-channel.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-zmq-channel"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-zmq-channel.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-zmq-channel" '("jupyter-")))
 
 ;;;***
 
-;;;### (autoloads nil "jupyter-zmq-channel-ioloop" "jupyter-zmq-channel-ioloop.el"
+;;;### (autoloads "actual autoloads are elsewhere" "jupyter-zmq-channel-ioloop"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel-ioloop.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from jupyter-zmq-channel-ioloop.el
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel-ioloop.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "jupyter-zmq-channel-ioloop" '("jupyter-zmq-channel-ioloop")))
 
 ;;;***
 
-;;;### (autoloads nil "ob-jupyter" "ob-jupyter.el" (0 0 0 0))
-;;; Generated autoloads from ob-jupyter.el
+;;;### (autoloads nil "ob-jupyter" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/ob-jupyter.el"
+;;;;;;  "90b3bbb743df4cfa166d138baaa2828d")
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/ob-jupyter.el
 
 (autoload 'org-babel-jupyter-scratch-buffer "ob-jupyter" "\
 Display a scratch buffer connected to the current block's session.
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "ob-jupyter" "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/ob-jupyter.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/jupyter-20200417.1907/ob-jupyter.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ob-jupyter" '("org-babel-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil nil ("jupyter-R.el" "jupyter-c++.el" "jupyter-javascript.el"
-;;;;;;  "jupyter-pkg.el" "jupyter-python.el" "jupyter.el") (0 0 0
-;;;;;;  0))
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-R.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-base.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-c++.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop-comm.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel-ioloop.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-channel.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-client.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-comm-layer.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-env.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop-comm.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-ioloop.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-javascript.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-julia.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-manager.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernel-process-manager.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-kernelspec.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-messages.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-mime.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-client.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-org-extensions.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-pkg.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-python.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-repl.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-rest-api.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server-ioloop.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-server.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-tramp.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-widget-client.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel-ioloop.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter-zmq-channel.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/jupyter.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/jupyter-20200417.1907/ob-jupyter.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

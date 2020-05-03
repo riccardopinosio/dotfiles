@@ -6,10 +6,17 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "websocket" "websocket.el" (0 0 0 0))
-;;; Generated autoloads from websocket.el
+;;;### (autoloads "actual autoloads are elsewhere" "websocket" "../../../../../../.emacs.d/elpa/websocket-20200419.2124/websocket.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/websocket-20200419.2124/websocket.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "websocket" '("websocket-")))
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/websocket-20200419.2124/websocket-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/websocket-20200419.2124/websocket.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 
