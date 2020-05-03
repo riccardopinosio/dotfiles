@@ -1,2 +1,8 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/riccardo/.emacs.d/recentf" . 273))
+(("/home/riccardo/.emacs.d/recentf" . 410)
+ ("/home/riccardo/.local/share/chezmoi/emacs.d/init.el" . 28369)
+ ("/home/riccardo/test.py" . 313)
+ ("/home/riccardo/.emacs.d/elpa/ein-20200425.1940/ein-autoloads.el" . 13200)
+ ("/home/riccardo/.emacs.d/elpa/anaphora-20180618.2200/anaphora-autoloads.el" . 7348)
+ ("/home/riccardo/.emacs.d/elpa/request-20200219.2257/request-autoloads.el" . 404)
+ ("/home/riccardo/.emacs.d/elpa/deferred-20170901.1330/deferred-autoloads.el" . 410))

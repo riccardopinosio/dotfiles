@@ -1,17 +1,22 @@
 
 ;; ----- smex-history -----
 (
+ load-file
+ pyvenv-activate
+ terminal
+ completion-at-point
+ company-complete
  fira-code-mode
  color-theme-sanityinc-tomorrow-night
- R
- cd
- 5x5
- arp
- dbx
 )
 
 ;; ----- smex-data -----
 (
  (color-theme-sanityinc-tomorrow-night . 1)
  (fira-code-mode . 1)
+ (terminal . 2)
+ (company-complete . 2)
+ (completion-at-point . 1)
+ (load-file . 4)
+ (pyvenv-activate . 1)
 )

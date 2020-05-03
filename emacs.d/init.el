@@ -781,10 +781,6 @@
   (define-key python-mode-map (kbd "<C-return>") 'eir-eval-in-python)
   (define-key python-mode-map (kbd "C-c C-b") 'python-shell-send-buffer)
   (define-key python-mode-map (kbd "<C-S-return>") 'python-shell-send-buffer)
-  ;; use ipython if we can
-  (when (executable-find "ipython")
-    (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "--simple-prompt -i"))
   ;; make outline work
   (add-hook 'python-mode-hook
           (lambda()
@@ -1329,6 +1325,11 @@ Will prompt you shell name when you type `C-u' before this command."
 (eval-after-load "company"
 '(add-to-list 'company-backends 'company-anaconda))
 (add-hook 'python-mode-hook 'anaconda-mode)
+
+  ;; use ipython if we can
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--simple-prompt -i"))
 
   ;; start with untitled new buffer
   (add-hook 'after-init-hook
