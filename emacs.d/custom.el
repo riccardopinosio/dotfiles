@@ -12,12 +12,13 @@
  '(doom-themes-enable-bold t)
  '(doom-themes-enable-italic t)
  '(inhibit-splash-screen t)
+ '(inhibit-startup-screen t)
  '(initial-major-mode (quote fundamental-mode))
  '(initial-scratch-message "")
  '(package-last-refresh-date "2020-05-03T12:15")
  '(package-selected-packages
    (quote
-    (treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
+    (multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
  '(user-full-name "Andrey Orst")
  '(user-mail-address "andreyorst@gmail.com"))
 (custom-set-faces

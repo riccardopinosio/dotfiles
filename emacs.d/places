@@ -1,9 +1,13 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/riccardo/.local/share/chezmoi/emacs.d/"
+(("/home/riccardo/test.py" . 312)
+ ("/home/riccardo/.local/share/chezmoi/emacs.d/.cache/treemacs-persist" . 45)
+ ("/home/riccardo/powerlevel10k/"
+  (dired-filename . "/home/riccardo/powerlevel10k/config"))
+ ("/home/riccardo/.local/share/chezmoi/emacs.d/elpa/multi-term-20200112.533/multi-term-autoloads.el" . 1943)
+ ("/home/riccardo/.local/share/chezmoi/emacs.d/"
   (dired-filename . "/home/riccardo/.local/share/chezmoi/emacs.d/auto-save-list"))
  ("/home/riccardo/.emacs.d/"
   (dired-filename . "/home/riccardo/.emacs.d/README.org"))
- ("/home/riccardo/test.py" . 312)
  ("/home/riccardo/.emacs.d/README.org" . 2180)
  ("/home/riccardo/.emacs.d/init.el" . 16487)
  ("/home/riccardo/"
