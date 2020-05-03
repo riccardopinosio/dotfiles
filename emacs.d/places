@@ -1,8 +1,13 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/riccardo/.emacs.d/recentf" . 410)
- ("/home/riccardo/.local/share/chezmoi/emacs.d/init.el" . 28369)
- ("/home/riccardo/test.py" . 313)
- ("/home/riccardo/.emacs.d/elpa/ein-20200425.1940/ein-autoloads.el" . 13200)
- ("/home/riccardo/.emacs.d/elpa/anaphora-20180618.2200/anaphora-autoloads.el" . 7348)
- ("/home/riccardo/.emacs.d/elpa/request-20200219.2257/request-autoloads.el" . 404)
- ("/home/riccardo/.emacs.d/elpa/deferred-20170901.1330/deferred-autoloads.el" . 410))
+(("/home/riccardo/.local/share/chezmoi/emacs.d/"
+  (dired-filename . "/home/riccardo/.local/share/chezmoi/emacs.d/auto-save-list"))
+ ("/home/riccardo/.emacs.d/"
+  (dired-filename . "/home/riccardo/.emacs.d/README.org"))
+ ("/home/riccardo/test.py" . 312)
+ ("/home/riccardo/.emacs.d/README.org" . 2180)
+ ("/home/riccardo/.emacs.d/init.el" . 16487)
+ ("/home/riccardo/"
+  (dired-filename . "/home/riccardo/.aliases"))
+ ("/home/riccardo/.emacs.d/elpa/treemacs-magit-20200421.1426/treemacs-magit-autoloads.el" . 455)
+ ("/home/riccardo/.emacs.d/elpa/separedit-20200407.728/separedit-autoloads.el" . 938)
+ ("/home/riccardo/.emacs.d/elpa/edit-indirect-20191103.1013/edit-indirect-autoloads.el" . 1730))
