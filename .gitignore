@@ -1,3 +1,6 @@
 elpa
 .cache
-
+emacs.d
+!emacs.d/init.el
+!emacs.d/README.org
+!emacs.d/custom.el
