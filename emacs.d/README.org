@@ -1,6 +1,6 @@
 #+title: Emacs configuration with Org Mode
-#+author: Andrey Orst
-#+email: andreyorst@gmail.com
+#+author: Riccardo Pinosio
+#+email: rpinosio@gmail.com
 #+setupfile: ./.org-defaults.org
 #+startup: noinlineimages
 #+property: header-args :tangle "./init.el" :results silent
@@ -1286,6 +1286,21 @@ I prefer Evil mode for input, so I am going to require that.
   (evil-mode))
 #+end_src
 
+Some mappings for evil commands:
+
+#+begin_src emacs-lisp
+(define-key evil-normal-state-map (kbd "C-n") 'evil-next-buffer)
+(define-key evil-normal-state-map (kbd "C-p") 'evil-prev-buffer)
+#+end_src
+
+** Brackets
+I would  like to have  closing brackets autoinserted when  the opening
+bracket is inserted.
+
+#+begin_src emacs-lisp
+(electric-pair-mode 1)
+#+end_src
+
 * Languages
 This section contains various  language specific settings and external
 packages that provide language support.
@@ -1499,17 +1514,15 @@ Installing ESS to work with R:
 I need the language support packages. I am going with LSP.
 
 #+begin_src emacs-lisp
-;;(use-package lsp-python-ms
-;;  :ensure t
-;;  :hook (python-mode . (lambda ()
-;;                       (require 'lsp-python-ms)
-;;                      (lsp)))
-;;)
+(use-package lsp-python-ms
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))
 
 (use-package lsp-mode
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (ess-mode . lsp)
-         (python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)

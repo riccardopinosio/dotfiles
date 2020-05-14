@@ -4,3 +4,5 @@ emacs.d/history
 emacs.d/places
 emacs.d/transient
 emacs.d/.cache
+.lsp-session*
+auto-save-list

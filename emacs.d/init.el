@@ -759,6 +759,11 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :config ;; tweak evil after loading it
   (evil-mode))
 
+(define-key evil-normal-state-map (kbd "C-n") 'evil-next-buffer)
+(define-key evil-normal-state-map (kbd "C-p") 'evil-prev-buffer)
+
+(electric-pair-mode 1)
+
 (use-package org
   :ensure nil
   :defines default-justification
@@ -904,17 +909,15 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
  :ensure t
  :init (load "ess-autoloads"))
 
-;;(use-package lsp-python-ms
-;;  :ensure t
-;;  :hook (python-mode . (lambda ()
-;;                       (require 'lsp-python-ms)
-;;                      (lsp)))
-;;)
+(use-package lsp-python-ms
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp))))
 
 (use-package lsp-mode
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (ess-mode . lsp)
-         (python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
