@@ -899,6 +899,19 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :custom
   (css-indent-offset 2))
 
+;; virtual environments
+(use-package pyvenv
+  :ensure t
+)
+;; jupyter
+(use-package jupyter
+  :ensure t
+)
+;; ein
+(use-package ein
+  :ensure t
+)
+
 (use-package ess
  :ensure t
  :init (load "ess-autoloads"))
@@ -1324,15 +1337,3 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-last-refresh-date "2020-05-15T12:34"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

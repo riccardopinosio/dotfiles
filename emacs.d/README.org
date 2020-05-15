@@ -1495,6 +1495,22 @@ Some configurations for shell script modes.
 ** python
 I  use python  a lot  for  data science.  Here  I setup  a few  useful
 packages to turn emacs into a python IDE.
+
+#+begin_src emacs-lisp
+;; virtual environments
+(use-package pyvenv
+  :ensure t
+)
+;; jupyter
+(use-package jupyter
+  :ensure t
+)
+;; ein
+(use-package ein
+  :ensure t
+)
+#+end_src
+
 ** R
 Installing ESS to work with R:
 
