@@ -7,9 +7,9 @@
 ;;;
 ;;; Code:
 
-(defvar aorst--gc-cons-threshold gc-cons-threshold)
-(defvar aorst--gc-cons-percentage gc-cons-percentage)
-(defvar aorst--file-name-handler-alist file-name-handler-alist)
+(defvar riccardo--gc-cons-threshold gc-cons-threshold)
+(defvar riccardo--gc-cons-percentage gc-cons-percentage)
+(defvar riccardo--file-name-handler-alist file-name-handler-alist)
 
 (setq-default gc-cons-threshold 402653184
               gc-cons-percentage 0.6
@@ -19,9 +19,9 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (setq gc-cons-threshold aorst--gc-cons-threshold
-                  gc-cons-percentage aorst--gc-cons-percentage
-                  file-name-handler-alist aorst--file-name-handler-alist)))
+            (setq gc-cons-threshold riccardo--gc-cons-threshold
+                  gc-cons-percentage riccardo--gc-cons-percentage
+                  file-name-handler-alist riccardo--file-name-handler-alist)))
 
 (defvar comp-deferred-compilation)
 (setq comp-deferred-compilation t)

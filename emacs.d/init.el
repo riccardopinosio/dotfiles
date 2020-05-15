@@ -67,14 +67,6 @@ needed to trigger automatic refresh before calling `package-install'."
 
 (setq ring-bell-function 'ignore)
 
-(use-package files
-  :ensure nil
-  :custom
-  (backup-by-copying t)
-  (create-lockfiles nil)
-  (backup-directory-alist '(("." . "~/.cache/emacs-backups")))
-  (auto-save-file-name-transforms '((".*" "~/.cache/emacs-backups/" t))))
-
 (use-package subr
   :no-require t
   :ensure nil
@@ -135,31 +127,31 @@ needed to trigger automatic refresh before calling `package-install'."
 
 (use-package simple
   :ensure nil
-  :bind (("C-w" . aorst/kill-region-or-word)
-         ("C-o" . aorst/newline-below)
-         ("C-S-o" . aorst/newline-above)
+  :bind (("C-w" . riccardo/kill-region-or-word)
+         ("C-o" . riccardo/newline-below)
+         ("C-S-o" . riccardo/newline-above)
          ("M-z" . zap-up-to-char)
          ("M-S-z" . zap-to-char))
   :hook (before-save . delete-trailing-whitespace)
   :init
-  (defun aorst/kill-region-or-word (arg)
+  (defun riccardo/kill-region-or-word (arg)
     (interactive "*p")
     (if (and transient-mark-mode
              mark-active)
         (kill-region (region-beginning) (region-end))
       (backward-kill-word arg)))
-  (defun aorst/newline-below ()
+  (defun riccardo/newline-below ()
     (interactive)
     (end-of-line)
     (newline-and-indent))
-  (defun aorst/newline-above ()
+  (defun riccardo/newline-above ()
     (interactive)
     (back-to-indentation)
     (newline-and-indent)
     (forward-line -1)
     (indent-according-to-mode)))
 
-(defun aorst/real-buffer-p (&optional buffer)
+(defun riccardo/real-buffer-p (&optional buffer)
   "Determines whether BUFFER is real."
   (let ((buffer-name (buffer-name buffer)))
     (or (and (not (minibufferp))
@@ -171,22 +163,22 @@ needed to trigger automatic refresh before calling `package-install'."
         (string-match-p "\*Org Src .*\*" buffer-name)
         (string-match-p "*eww*" buffer-name))))
 
-(defun aorst/real-buffer-setup (&rest _)
+(defun riccardo/real-buffer-setup (&rest _)
   "Wrapper around `set-window-fringes' function."
   (when window-system
     (let* ((window (selected-window))
            (buffer (window-buffer window)))
-      (when (aorst/real-buffer-p buffer)
+      (when (riccardo/real-buffer-p buffer)
         (set-window-fringes window 8 8 t)
         (when (bound-and-true-p desktop-save-mode)
           (setq desktop-save-buffer t))))))
 
-(defun aorst/kill-when-no-processes (&rest _)
+(defun riccardo/kill-when-no-processes (&rest _)
   "Kill buffer and its window when there's no processes left."
   (when (null (get-buffer-process (current-buffer)))
     (kill-buffer (current-buffer))))
 
-(defun aorst/escape ()
+(defun riccardo/escape ()
   "Quit in current context.
 
 When there is an active minibuffer and we are not inside it close
@@ -206,20 +198,20 @@ are defining or executing a macro."
                      executing-kbd-macro)
            (keyboard-quit))))
   (message this-command))
-(global-set-key [remap keyboard-quit] #'aorst/escape)
+(global-set-key [remap keyboard-quit] #'riccardo/escape)
 
-(defun aorst/font-installed-p (font-name)
+(defun riccardo/font-installed-p (font-name)
   "Check if font with FONT-NAME is available."
   (find-font (font-spec :name font-name)))
 
-(defun aorst/indent-buffer ()
+(defun riccardo/indent-buffer ()
   "Indent whole buffer."
   (interactive)
   (save-excursion
     (save-restriction
       (indent-region (point-min) (point-max)))))
 
-(global-set-key (kbd "C-c C-f") #'aorst/indent-buffer)
+(global-set-key (kbd "C-c C-f") #'riccardo/indent-buffer)
 
 (use-package startup
   :no-require t
@@ -303,7 +295,7 @@ are defining or executing a macro."
 
 (use-package all-the-icons
   :config
-  (when (and (not (aorst/font-installed-p "all-the-icons"))
+  (when (and (not (riccardo/font-installed-p "all-the-icons"))
              (window-system))
     (all-the-icons-install-fonts t)))
 
@@ -318,12 +310,14 @@ are defining or executing a macro."
                       :distant-foreground 'unspecified
                       :background 'unspecified))
 
+(set-face-foreground 'font-lock-comment-face "#ff8c00")
+
 (when window-system
   (use-package fringe
     :ensure nil
     :hook ((buffer-list-update
             window-configuration-change
-            change-major-mode) . aorst/real-buffer-setup)
+            change-major-mode) . riccardo/real-buffer-setup)
     :init
     (fringe-mode 0)
     (or standard-display-table
@@ -414,12 +408,12 @@ are defining or executing a macro."
            ("<f8>" . treemacs-select-window)
            :map
            treemacs-mode-map
-           ([C-tab] . aorst/treemacs-expand-all-projects))
-    :hook ((after-init . aorst/treemacs-after-init-setup)
-           (treemacs-mode . aorst/after-treemacs-setup)
-           (treemacs-switch-workspace . aorst/treemacs-expand-all-projects)
+           ([C-tab] . riccardo/treemacs-expand-all-projects))
+    :hook ((after-init . riccardo/treemacs-after-init-setup)
+           (treemacs-mode . riccardo/after-treemacs-setup)
+           (treemacs-switch-workspace . riccardo/treemacs-expand-all-projects)
            (treemacs-switch-workspace . treemacs-set-fallback-workspace)
-           (treemacs-mode . aorst/treemacs-setup-title))
+           (treemacs-mode . riccardo/treemacs-setup-title))
     :custom
     (treemacs-width 34)
     (treemacs-is-never-other-window t)
@@ -434,12 +428,12 @@ are defining or executing a macro."
                         :foreground (face-attribute 'default :foreground)
                         :height 1.0
                         :weight 'normal)
-    (defun aorst/treemacs-ignore (file _)
+    (defun riccardo/treemacs-ignore (file _)
       (or (s-ends-with? ".elc" file)
           (s-ends-with? ".o" file)
           (s-ends-with? ".a" file)
           (string= file ".svn")))
-    (add-to-list 'treemacs-ignored-file-predicates #'aorst/treemacs-ignore)
+    (add-to-list 'treemacs-ignored-file-predicates #'riccardo/treemacs-ignore)
     (treemacs-create-theme "Atom"
       :config
       (progn
@@ -596,7 +590,7 @@ are defining or executing a macro."
                                  :face '(:inherit font-lock-doc-face :slant normal)))
          :extensions (fallback))))
     :init
-    (defun aorst/treemacs-expand-all-projects (&optional _)
+    (defun riccardo/treemacs-expand-all-projects (&optional _)
       "Expand all projects."
       (interactive)
       (save-excursion
@@ -607,7 +601,7 @@ are defining or executing a macro."
               (goto-char pos)
               (treemacs--expand-root-node pos)))))
       (treemacs--maybe-recenter 'on-distance))
-    (defun aorst/treemacs-variable-pitch-labels (&rest _)
+    (defun riccardo/treemacs-variable-pitch-labels (&rest _)
       (dolist (face '(treemacs-file-face
                       treemacs-root-face
                       treemacs-tags-face
@@ -634,14 +628,14 @@ are defining or executing a macro."
           (set-face-attribute
            face nil :inherit
            `(variable-pitch ,@(delq 'unspecified (if (listp faces) faces (list faces))))))))
-    (defun aorst/treemacs-after-init-setup ()
+    (defun riccardo/treemacs-after-init-setup ()
       "Set treemacs theme, open treemacs, and expand all projects."
       (treemacs-load-theme "Atom")
       (setq treemacs-collapse-dirs 0)
       (treemacs)
-      (aorst/treemacs-expand-all-projects)
+      (riccardo/treemacs-expand-all-projects)
       (windmove-right))
-    (defun aorst/after-treemacs-setup ()
+    (defun riccardo/after-treemacs-setup ()
       "Set treemacs buffer common settings."
       (setq tab-width 1
             mode-line-format nil
@@ -649,13 +643,13 @@ are defining or executing a macro."
       (setq-local scroll-step 1)
       (setq-local scroll-conservatively 10000)
       (set-window-fringes nil 0 0 t)
-      (aorst/treemacs-variable-pitch-labels))
-    (defun aorst/treemacs-setup-fringes ()
+      (riccardo/treemacs-variable-pitch-labels))
+    (defun riccardo/treemacs-setup-fringes ()
       "Set treemacs buffer fringes."
       (set-window-fringes nil 0 0 t)
-      (aorst/treemacs-variable-pitch-labels))
-    (advice-add #'treemacs-select-window :after #'aorst/treemacs-setup-fringes)
-    (defun aorst/treemacs-setup-title ()
+      (riccardo/treemacs-variable-pitch-labels))
+    (advice-add #'treemacs-select-window :after #'riccardo/treemacs-setup-fringes)
+    (defun riccardo/treemacs-setup-title ()
       (let ((bg (face-attribute 'default :background))
             (fg (face-attribute 'default :foreground)))
         (face-remap-add-relative 'header-line
@@ -769,11 +763,11 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :defines default-justification
   :hook ((org-mode . flyspell-mode)
          (org-mode . auto-fill-mode)
-         (after-save . aorst/org-tangle-on-config-save)
-         (org-babel-after-execute . aorst/org-update-inline-images)
-         (org-mode . aorst/org-init-setup)
+         (after-save . riccardo/org-tangle-on-config-save)
+         (org-babel-after-execute . riccardo/org-update-inline-images)
+         (org-mode . riccardo/org-init-setup)
          (ediff-prepare-buffer . outline-show-all)
-         ((org-capture-mode org-src-mode) . aorst/discard-history))
+         ((org-capture-mode org-src-mode) . riccardo/discard-history))
   :bind (("C-c a" . org-agenda)
          :map
          org-mode-map
@@ -809,19 +803,19 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-+]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  (defun aorst/org-tangle-on-config-save ()
+  (defun riccardo/org-tangle-on-config-save ()
     "Tangle source code blocks when configuration file is saved."
     (when (string= buffer-file-name (file-truename (concat user-emacs-directory "README.org")))
       (org-babel-tangle)))
-  (defun aorst/org-update-inline-images ()
+  (defun riccardo/org-update-inline-images ()
     "Update inline images in Org-mode."
     (interactive)
     (when org-inline-image-overlays
       (org-redisplay-inline-images)))
-  (defun aorst/org-init-setup ()
+  (defun riccardo/org-init-setup ()
     "Set buffer local values."
     (setq default-justification 'full))
-  (defun aorst/discard-history ()
+  (defun riccardo/discard-history ()
     "Discard undo history of org src and capture blocks."
     (setq buffer-undo-list nil)
     (set-buffer-modified-p nil))
@@ -850,7 +844,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-  (defun aorst/org-update-latex-preview-background-color (&rest _)
+  (defun riccardo/org-update-latex-preview-background-color (&rest _)
     (setq-default
      org-format-latex-options
      (plist-put org-format-latex-options
@@ -858,7 +852,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
                 (face-attribute (or (cadr (assq 'default face-remapping-alist))
                                     'default)
                                 :background nil t))))
-  (add-hook 'solaire-mode-hook #'aorst/org-update-latex-preview-background-color))
+  (add-hook 'solaire-mode-hook #'riccardo/org-update-latex-preview-background-color))
 
 (use-package prog-mode
   :ensure nil
@@ -872,25 +866,25 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
          ("\\.markdown\\'" . markdown-mode))
   :config
   (defvar markdown-command "multimarkdown")
-  (defun aorst/markdown-setup ()
+  (defun riccardo/markdown-setup ()
     "Set buffer local variables."
     (setq fill-column 80
           default-justification 'left))
   :hook ((markdown-mode . flyspell-mode)
          (markdown-mode . auto-fill-mode)
-         (markdown-mode . aorst/markdown-setup)))
+         (markdown-mode . riccardo/markdown-setup)))
 
 (use-package toml-mode
   :bind (:map
          toml-mode-map
-         ("C-c C-f" . aorst/indent-buffer)))
+         ("C-c C-f" . riccardo/indent-buffer)))
 
 (use-package elisp-mode
   :ensure nil
   :hook (emacs-lisp-mode . eldoc-mode)
   :bind (:map
          emacs-lisp-mode-map
-         ("C-c C-f" . aorst/indent-buffer)))
+         ("C-c C-f" . riccardo/indent-buffer)))
 
 (use-package yaml-mode)
 
@@ -898,7 +892,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :ensure nil
   :bind (:map
          sh-mode-map
-         ("C-c C-f" . aorst/indent-buffer)))
+         ("C-c C-f" . riccardo/indent-buffer)))
 
 (use-package css-mode
   :ensure nil
@@ -941,11 +935,11 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 (setq use-package-hook-name-suffix "-functions")
 (when (bound-and-true-p module-file-suffix)
   (use-package vterm
-    :bind (("C-`" . aorst/vterm-toggle)
-           ("C-t" . aorst/vterm-focus))
-    :hook (vterm-exit . aorst/kill-vterm)
+    :bind (("C-`" . riccardo/vterm-toggle)
+           ("C-t" . riccardo/vterm-focus))
+    :hook (vterm-exit . riccardo/kill-vterm)
     :config
-    (defun aorst/vterm-toggle (&optional arg)
+    (defun riccardo/vterm-toggle (&optional arg)
       "Toggle `vterm' window on and off with the same command."
       (interactive "P")
       (let* ((directory (if default-directory
@@ -975,14 +969,14 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
             (set-window-parameter window 'no-delete-other-windows t)
             (set-window-parameter window 'window-side side)
             (set-window-parameter window 'no-other-window t)))))
-    (defun aorst/vterm-focus (&optional arg)
+    (defun riccardo/vterm-focus (&optional arg)
       "Focus `vterm' or open one if there's none."
       (interactive "P")
       (let ((window (get-buffer-window "*vterm*")))
         (if window
             (select-window window)
-          (aorst/vterm-toggle arg))))
-    (defun aorst/kill-vterm (buf &optional event)
+          (riccardo/vterm-toggle arg))))
+    (defun riccardo/kill-vterm (buf &optional event)
       "Kill the `*vterm*' buffer after shell exits."
       (when buf (kill-buffer buf)))))
 (setq use-package-hook-name-suffix "-hook")
@@ -1004,8 +998,8 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 
 (use-package ivy
   :commands ivy-mode
-  :hook ((minibuffer-setup-hook . aorst/minibuffer-defer-garbage-collection)
-         (minibuffer-exit-hook . aorst/minibuffer-restore-garbage-collection))
+  :hook ((minibuffer-setup-hook . riccardo/minibuffer-defer-garbage-collection)
+         (minibuffer-exit-hook . riccardo/minibuffer-restore-garbage-collection))
   :bind (("C-x b" . ivy-switch-buffer))
   :custom
   (ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
@@ -1017,13 +1011,13 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   (ivy-use-virtual-buffers t)
   (enable-recursive-minibuffers t)
   :init
-  (defun aorst/minibuffer-defer-garbage-collection ()
+  (defun riccardo/minibuffer-defer-garbage-collection ()
     "Defer garbage collection for minibuffer"
     (setq gc-cons-threshold most-positive-fixnum))
-  (defun aorst/minibuffer-restore-garbage-collection ()
+  (defun riccardo/minibuffer-restore-garbage-collection ()
     "Resotre garbage collection settings."
     (run-at-time
-     1 nil (lambda () (setq gc-cons-threshold aorst--gc-cons-threshold))))
+     1 nil (lambda () (setq gc-cons-threshold riccardo--gc-cons-threshold))))
   (ivy-mode 1))
 
 (use-package counsel
@@ -1060,16 +1054,16 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 (use-package ivy-posframe
   :after ivy
   :custom
-  (ivy-posframe-display-functions-alist '((t . aorst/posframe-position)))
+  (ivy-posframe-display-functions-alist '((t . riccardo/posframe-position)))
   (ivy-posframe-height-alist '((t . 16)))
   (ivy-posframe-parameters '((internal-border-width . 6)))
   (ivy-posframe-width 78)
   :config
-  (defvar aorst--ivy-posframe-top-padding 42
+  (defvar riccardo--ivy-posframe-top-padding 42
     "additional padding between top of the frame and posframe.")
-  (defun aorst/posframe-position (str)
-    (ivy-posframe--display str #'aorst/posframe-under-tabs-center))
-  (defun aorst/posframe-under-tabs-center (info)
+  (defun riccardo/posframe-position (str)
+    (ivy-posframe--display str #'riccardo/posframe-under-tabs-center))
+  (defun riccardo/posframe-under-tabs-center (info)
     "Function that sets center position for ivy posframe."
     (cons (/ (- (plist-get info :parent-frame-width)
                 (plist-get info :posframe-width))
@@ -1127,28 +1121,28 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 
 (use-package ediff
   :ensure nil
-  :hook ((ediff-before-setup . aorst/store-pre-ediff-winconfig)
-         (ediff-quit . aorst/restore-pre-ediff-winconfig)
-         (ediff-keymap-setup . aorst/ediff-setup-keys))
+  :hook ((ediff-before-setup . riccardo/store-pre-ediff-winconfig)
+         (ediff-quit . riccardo/restore-pre-ediff-winconfig)
+         (ediff-keymap-setup . riccardo/ediff-setup-keys))
   :config
   (advice-add 'ediff-window-display-p :override #'ignore)
   :custom
   (ediff-split-window-function 'split-window-horizontally)
   :init
-  (defvar aorst--ediff-last-windows nil
+  (defvar riccardo--ediff-last-windows nil
     "Stores window configuration before `ediff' was invoked.")
-  (defun aorst/store-pre-ediff-winconfig ()
-    (setq aorst--ediff-last-windows (current-window-configuration)))
-  (defun aorst/restore-pre-ediff-winconfig ()
-    (set-window-configuration aorst--ediff-last-windows))
-  (defun aorst/ediff-copy-both-to-C ()
+  (defun riccardo/store-pre-ediff-winconfig ()
+    (setq riccardo--ediff-last-windows (current-window-configuration)))
+  (defun riccardo/restore-pre-ediff-winconfig ()
+    (set-window-configuration riccardo--ediff-last-windows))
+  (defun riccardo/ediff-copy-both-to-C ()
     (interactive)
     (ediff-copy-diff ediff-current-difference nil 'C nil
                      (concat
                       (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
                       (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
-  (defun aorst/ediff-setup-keys ()
-    (define-key ediff-mode-map "d" #'aorst/ediff-copy-both-to-C)))
+  (defun riccardo/ediff-setup-keys ()
+    (define-key ediff-mode-map "d" #'riccardo/ediff-copy-both-to-C)))
 
 (use-package multiple-cursors
   :commands (mc/cycle-backward
@@ -1214,17 +1208,17 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
     ("G" #'(lambda () (interactive) (deactivate-mark)) :exit t)))
 
 (use-package iedit
-  :bind (("M-n" . aorst/iedit-current-or-expand)
-         ("C-c i" . aorst/iedit-hydrant))
+  :bind (("M-n" . riccardo/iedit-current-or-expand)
+         ("C-c i" . riccardo/iedit-hydrant))
   :custom
   (iedit-toggle-key-default nil)
   :init
-  (defun aorst/iedit-to-mc-hydrant ()
+  (defun riccardo/iedit-to-mc-hydrant ()
     "Calls `iedit-to-mc-mode' and opens hydra for multiple cursors."
     (interactive)
     (iedit-switch-to-mc-mode)
     (hydrant/mc/body))
-  (defun aorst/iedit-current-or-expand (&optional arg)
+  (defun riccardo/iedit-current-or-expand (&optional arg)
     "Select only currnent occurrence with `iedit-mode'.  Expand to
   next occurrence if `iedit-mode' is already active."
     (interactive "P")
@@ -1233,7 +1227,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
             (iedit-expand-down-to-occurrence)
           (iedit-expand-up-to-occurrence))
       (iedit-mode 1)))
-  (defun aorst/iedit-hydrant ()
+  (defun riccardo/iedit-hydrant ()
     "toggle iedit mode for item under point, and open `hydrant/iedit'."
     (interactive)
     (ignore-errors
@@ -1248,7 +1242,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
  ^ ^                       _G_:      exit iedit-mode   _#_: insert numbers
  ^ ^                       _m_:      switch to mc"
     ("n" iedit-expand-down-to-occurrence)
-    ("m" aorst/iedit-to-mc-hydrant :exit t)
+    ("m" riccardo/iedit-to-mc-hydrant :exit t)
     ("p" iedit-expand-up-to-occurrence)
     ("u" iedit-upcase-occurrences)
     ("d" iedit-downcase-occurrences)
@@ -1271,9 +1265,9 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :requires transient
   :hook (prog-mode . hs-minor-mode)
   :bind (:map prog-mode-map
-              ("<f6>" . aorst/hideshow-menu))
+              ("<f6>" . riccardo/hideshow-menu))
   :config
-  (define-transient-command aorst/hideshow-menu ()
+  (define-transient-command riccardo/hideshow-menu ()
     "Hideshow commands."
     [:description
      "Hide"
@@ -1285,7 +1279,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
      ("sb" "block" hs-show-block)]
     (interactive)
     (when (bound-and-true-p hs-minor-mode)
-      (transient-setup 'aorst/hideshow-menu nil nil))))
+      (transient-setup 'riccardo/hideshow-menu nil nil))))
 
 (use-package saveplace
   :ensure nil
@@ -1293,22 +1287,22 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   (save-place-mode))
 
 (use-package edit-indirect
-  :hook ((edit-indirect-after-creation . aorst/real-buffer-setup)
-         (edit-indirect-after-creation . aorst/edit-indirect-header-line-setup))
+  :hook ((edit-indirect-after-creation . riccardo/real-buffer-setup)
+         (edit-indirect-after-creation . riccardo/edit-indirect-header-line-setup))
   :bind (:map
          edit-indirect-mode-map
          ("C-c C-c" . edit-indirect-commit)
          ("C-c C-k" . edit-indirect-abort)
          ("C-c '" . nil))
   :init
-  (defun aorst/edit-indirect-header-line-setup ()
+  (defun riccardo/edit-indirect-header-line-setup ()
     (setq-local
      header-line-format
      (substitute-command-keys
       "\\<edit-indirect-mode-map>Edit, then exit with `\\[edit-indirect-commit]' or abort with `\\[edit-indirect-abort]'"))))
 
 (use-package separedit
-  :hook (separedit-buffer-creation . aorst/separedit-header-line-setup)
+  :hook (separedit-buffer-creation . riccardo/separedit-header-line-setup)
   :bind (:map
          prog-mode-map
          ("C-c '" . separedit)
@@ -1317,7 +1311,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :custom
   (separedit-default-mode 'markdown-mode)
   :init
-  (defun aorst/separedit-header-line-setup ()
+  (defun riccardo/separedit-header-line-setup ()
     (setq-local
      header-line-format
      (substitute-command-keys
