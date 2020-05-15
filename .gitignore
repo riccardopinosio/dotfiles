@@ -5,5 +5,6 @@ emacs.d/places
 emacs.d/transient
 emacs.d/.cache
 emacs.d/tramp
+emacs.d/eshell
 .lsp-session*
 auto-save-list
