@@ -1,7 +1,13 @@
 fonts
 rstudio_user_settings
-# emacs prefs folder is managed as symlink
-emacs.d
+
+# emacs prefs are managed as symlinks
+
+README.org
+README.md
+init.el
+custom.el
+early-init.el
 
 # macos prefs
 {{ if ne .chezmoi.os "darwin" -}}
