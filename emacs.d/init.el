@@ -25,7 +25,7 @@
 
 This variable is then used to check whether
 `package-refresh-contents' call is needed before calling
-`package-install'. Value of this varialbe is updated when
+`package-install'. Value of this variable is updated when
 `package-refresh-contents' is called.
 
 See `package-refresh-hour-threshold' for amount of time needed to
@@ -62,8 +62,8 @@ needed to trigger automatic refresh before calling `package-install'."
   :no-require t
   :ensure nil
   :custom
-  (user-mail-address "andreyorst@gmail.com")
-  (user-full-name "Andrey Orst"))
+  (user-mail-address "rpinosio@gmail.com")
+  (user-full-name "Riccardo Pinosio"))
 
 (setq ring-bell-function 'ignore)
 
@@ -102,12 +102,6 @@ needed to trigger automatic refresh before calling `package-install'."
 (load disabled-commands :noerror)
 
 (savehist-mode 1)
-
-(use-package mule-cmds
-  :no-require t
-  :ensure nil
-  :custom
-  (default-input-method 'russian-computer))
 
 (prefer-coding-system 'utf-8)
 (when (display-graphic-p)

@@ -5,8 +5,6 @@
 #+startup: noinlineimages
 #+property: header-args :tangle "./init.el" :results silent
 
-[[file:.screenshot.png]]
-
 * About this document
 This is my Emacs configuration file in org mode. It is based on the
 beautiful configuration by Andrey Orst, which can be found
@@ -146,7 +144,7 @@ This concludes the =early-init.el= file.
 :properties:
 :header-args+: :tangle "./init.el"
 :end:
-Before Emacs  27 there were  no such thing  as =eraly-init.el=, so  if I
+Before Emacs  27 there were  no such thing  as =early-init.el=, so  if I
 will use  older Emacs  with this configuration  it will  miss settings
 that are done there. This code manually loads this file in such case:
 
@@ -190,7 +188,7 @@ This variable is  going to hold either =nil= or  date-time string.
 
   This variable is then used to check whether
   `package-refresh-contents' call is needed before calling
-  `package-install'. Value of this varialbe is updated when
+  `package-install'. Value of this variable is updated when
   `package-refresh-contents' is called.
 
   See `package-refresh-hour-threshold' for amount of time needed to
@@ -276,8 +274,8 @@ Emacs, or some modes can use those automatically, like Org Mode:
     :no-require t
     :ensure nil
     :custom
-    (user-mail-address "andreyorst@gmail.com")
-    (user-full-name "Andrey Orst"))
+    (user-mail-address "rpinosio@gmail.com")
+    (user-full-name "Riccardo Pinosio"))
 #+end_src
 
 ** Bell
@@ -377,25 +375,6 @@ it isn't default.
 #+begin_src emacs-lisp
   (savehist-mode 1)
 #+end_src
-
-** Keyboard Layout
-I use two keyboard layouts: =qwerty=  and =йцукен=, therefore I need a way
-to switch between those without loosing  ability to use such chords as
-=C-x=  which will  become  a =C-ч=  if  I select  Cyrillic  layout in  the
-OS. Luckily for  me, Emacs provides a method to  switch layouts within
-Emacs with =C-\=, so all common shortcuts will still work fine.
-
-#+begin_src emacs-lisp
-  (use-package mule-cmds
-    :no-require t
-    :ensure nil
-    :custom
-    (default-input-method 'russian-computer))
-#+end_src
-
-I'm  not   using  =russian-jcuken=   here  because  it   represents  the
-"typewriter" layout with number-line inverted,  so to access numbers I
-need to use Shift key. =russian-computer= doesn't have this problem.
 
 ** UTF8
 Let's use =UTF8= if we can:
