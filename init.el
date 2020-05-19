@@ -931,6 +931,11 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :config
   (which-key-mode))
 
+(use-package slime
+  :ensure t
+  :init  (setq inferior-lisp-program "sbcl")
+)
+
 (use-package help
   :ensure nil
   :custom (help-window-select t))
@@ -1331,15 +1336,3 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-last-refresh-date "2020-05-16T09:52"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

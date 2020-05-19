@@ -45,7 +45,6 @@
  '(geiser-default-implementation 'guile)
  '(help-window-select t)
  '(iedit-toggle-key-default nil t)
- '(inhibit-splash-screen t)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'fundamental-mode)
  '(initial-scratch-message "")
@@ -87,7 +86,7 @@
  '(org-startup-folded 'content t)
  '(org-startup-with-inline-images nil t)
  '(org-tags-column -100 t)
- '(package-last-refresh-date "2020-05-15T12:34")
+ '(package-last-refresh-date "2020-05-19T17:11")
  '(package-selected-packages
    '(ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package))
  '(parinfer-extensions '(defaults pretty-parens smart-tab smart-yank) t)

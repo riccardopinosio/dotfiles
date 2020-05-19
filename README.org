@@ -1524,6 +1524,16 @@ I need the language support packages. I am going with LSP.
   (which-key-mode))
 #+end_src
 
+** LISP
+I need facilities to program in common lisp:
+
+#+begin_src emacs-lisp
+(use-package slime
+  :ensure t
+  :init  (setq inferior-lisp-program "sbcl")
+)
+#+end_src
+
 * Tools
 Additional  packages  that  change  how Emacs  works,  providing  more
 comfortable user experience.
