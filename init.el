@@ -766,6 +766,8 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
          :map
          org-mode-map
          ("C-c l" . org-store-link))
+  :init
+  (setq org-agenda-files (list "~/repositories/personal/orgs"))
   :custom
   (org-startup-with-inline-images nil)
   (org-tags-column -100)
