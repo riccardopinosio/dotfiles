@@ -1528,7 +1528,7 @@ I need the language support packages. I am going with LSP.
 I need facilities to program in common lisp:
 
 #+begin_src emacs-lisp
-(use-package slime
+(use-package sly
   :ensure t
   :init  (setq inferior-lisp-program "sbcl")
 )

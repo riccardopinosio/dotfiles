@@ -931,7 +931,7 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :config
   (which-key-mode))
 
-(use-package slime
+(use-package sly
   :ensure t
   :init  (setq inferior-lisp-program "sbcl")
 )
