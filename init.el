@@ -145,6 +145,9 @@ needed to trigger automatic refresh before calling `package-install'."
     (forward-line -1)
     (indent-according-to-mode)))
 
+(setq confirm-kill-processes nil)
+(setq kill-buffer-query-functions nil)
+
 (defun riccardo/real-buffer-p (&optional buffer)
   "Determines whether BUFFER is real."
   (let ((buffer-name (buffer-name buffer)))

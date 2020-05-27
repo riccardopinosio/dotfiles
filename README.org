@@ -454,6 +454,12 @@ Also,  I don't  want  my  files to  contain  trailing whitespaces,  so
       (indent-according-to-mode)))
 #+end_src
 
+** killing processes
+Don ask to kill processes.
+#+begin_src emacs-lisp
+(setq confirm-kill-processes nil)
+(setq kill-buffer-query-functions nil)
+#+end_src
 * Functions
 This  section  describes  functions  I have  defined  for  use  inside
 configurations  of various  packages, that  are general  enough to  be
