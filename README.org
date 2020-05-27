@@ -1272,7 +1272,6 @@ bracket is inserted.
 (electric-pair-mode 1)
 #+end_src
 
-
 * Languages
 This section contains various  language specific settings and external
 packages that provide language support.
@@ -1498,6 +1497,14 @@ packages to turn emacs into a python IDE.
 (use-package ein
   :ensure t
 )
+;; make ipython the default if it is present in the environment
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"
+  python-shell-interpreter-args "--simple-prompt -i"))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "S-<return>") 'python-shell-send-region)))
 #+end_src
 
 ** R

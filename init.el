@@ -915,6 +915,14 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 (use-package ein
   :ensure t
 )
+;; make ipython the default if it is present in the environment
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython"
+  python-shell-interpreter-args "--simple-prompt -i"))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "S-<return>") 'python-shell-send-region)))
 
 (use-package ess
  :ensure t
