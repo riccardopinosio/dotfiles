@@ -918,11 +918,14 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 (use-package ein
   :ensure t
 )
-;; make ipython the default if it is present in the environment
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"
-  python-shell-interpreter-args "--simple-prompt -i"))
+;; make jupyter console the default
 
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+             "jupyter")
+;; key remapping so its like vscode
 (add-hook 'python-mode-hook
           (lambda ()
             (define-key python-mode-map (kbd "S-<return>") 'python-shell-send-region)))
