@@ -920,11 +920,13 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 )
 ;; make jupyter console the default
 
+(add-hook 'python-mode-hook
+(lambda ()
 (setq python-shell-interpreter "jupyter"
       python-shell-interpreter-args "console --simple-prompt"
       python-shell-prompt-detect-failure-warning nil)
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-             "jupyter")
+(add-to-list 'python-shell-completion-native-disabled-interpreters "jupyter")))
+
 ;; key remapping so its like vscode
 (add-hook 'python-mode-hook
           (lambda ()
