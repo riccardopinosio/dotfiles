@@ -1,8 +1,8 @@
 fonts
-rstudio_user_settings
 rstudio-prefs.json
 
 # emacs prefs are managed as symlinks
+# vscode prefs are managed via vscode settings sync ext
 
 README.org
 README.md
