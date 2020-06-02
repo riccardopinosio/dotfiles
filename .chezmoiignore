@@ -1,5 +1,6 @@
 fonts
 rstudio_user_settings
+rstudio-prefs.json
 
 # emacs prefs are managed as symlinks
 
@@ -14,11 +15,6 @@ early-init.el
 Library
 {{ end }}
 
-# linux prefs
-{{ if ne .chezmoi.os "linux" -}}
-.config
-{{ end }}
-
 # windows prefs
 {{ if eq .chezmoi.os "windows" -}}
 .vimrc
@@ -30,4 +26,8 @@ Library
 .bashrc
 .bash_profile
 .zshrc
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" -}}
+AppData
 {{ end }}

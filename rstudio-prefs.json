@@ -1,0 +1,36 @@
+{
+    "show_margin": false,
+    "reuse_sessions_for_project_links": true,
+    "panes": {
+        "quadrants": [
+            "Source",
+            "Console",
+            "TabSet1",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Environment",
+            "History",
+            "Connections",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Files",
+            "Plots",
+            "Packages",
+            "Help",
+            "Viewer"
+        ],
+        "console_left_on_top": false,
+        "console_right_on_top": true
+    },
+    "save_workspace": "never",
+    "load_workspace": false,
+    "always_save_history": false,
+    "windows_terminal_shell": "win-cmd",
+    "editor_keybindings": "vim",
+    "editor_theme": "Cobalt"
+}
