@@ -756,110 +756,109 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
 (electric-pair-mode 1)
 
 (use-package org
-    :ensure nil
-    :defines default-justification
-    :hook ((org-mode . flyspell-mode)
-           (org-mode . auto-fill-mode)
-           (after-save . riccardo/org-tangle-on-config-save)
-           (org-babel-after-execute . riccardo/org-update-inline-images)
-           (org-mode . riccardo/org-init-setup)
-           (ediff-prepare-buffer . outline-show-all)
-           ((org-capture-mode org-src-mode) . riccardo/discard-history))
-    :bind (("C-c a" . org-agenda)
-           :map
-           org-mode-map
-           ("C-c l" . org-store-link))
-    :init
-    (setq org-agenda-files (list "~/repositories/personal/orgs"))
-    ;; capture templates
-    (setq org-capture-templates
-      '(("p" "Todo" entry (file+headline "~/repositories/personal/orgs/personal.org" "Refile")
-         "* TODO %?\n  %i\n")
-         ("r" "Todo" entry (file+headline "~/repositories/personal/orgs/knowledge.org", "Refile"
-         "* TODO %?\n  %i\n  %a"
-))))
-    :custom
-    (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE" "CANCELLED")))
-    (org-startup-with-inline-images nil)
-    (org-tags-column -100)
-    (org-startup-folded 'content)
-    (org-hide-emphasis-markers t)
-    (org-adapt-indentation nil)
-    (org-hide-leading-stars t)
-    (org-highlight-latex-and-related '(latex))
-    (revert-without-query '(".*\.pdf"))
-    (org-preview-latex-default-process 'dvisvgm)
-    (org-src-fontify-natively t)
-    (org-preview-latex-image-directory ".ltximg/")
-    (org-latex-listings 'minted)
-    (org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
-                            ("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
-                            ("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-    (org-confirm-babel-evaluate nil)
-    (org-imenu-depth 8)
-    (org-log-done t)
-    (org-agenda-files '("~/Tasks"))
-    :config
-    (use-package ox-latex
-      :ensure nil)
-    (use-package ox-hugo
-      :after ox)
-    (when (not (version<= org-version "9.1.9"))
-      (use-package org-tempo
-        :ensure nil))
-    (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([-+]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-    (defun riccardo/org-tangle-on-config-save ()
-      "Tangle source code blocks when configuration file is saved."
-      (when (string= buffer-file-name (file-truename (concat user-emacs-directory "README.org")))
-        (org-babel-tangle)))
-    (defun riccardo/org-update-inline-images ()
-      "Update inline images in Org-mode."
-      (interactive)
-      (when org-inline-image-overlays
-        (org-redisplay-inline-images)))
-    (defun riccardo/org-init-setup ()
-      "Set buffer local values."
-      (setq default-justification 'full))
-    (defun riccardo/discard-history ()
-      "Discard undo history of org src and capture blocks."
-      (setq buffer-undo-list nil)
-      (set-buffer-modified-p nil))
-    (defvar minted-cache-dir
-      (file-name-as-directory
-       (expand-file-name ".minted/\\jobname"
-                         temporary-file-directory)))
-    (add-to-list 'org-latex-packages-alist
-                 `(,(concat "cachedir=" minted-cache-dir)
-                   "minted" nil))
-    (add-to-list 'org-latex-logfiles-extensions "tex")
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((gnuplot . t)
-       (scheme . t)))
-    (add-to-list 'org-latex-classes
-                 '("article"
-                   "\\documentclass{article}"
-                   ("\\section{%s}" . "\\section*{%s}")
-                   ("\\subsection{%s}" . "\\subsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-    (defun riccardo/org-update-latex-preview-background-color (&rest _)
-      (setq-default
-       org-format-latex-options
-       (plist-put org-format-latex-options
-                  :background
-                  (face-attribute (or (cadr (assq 'default face-remapping-alist))
-                                      'default)
-                                  :background nil t))))
-    (add-hook 'solaire-mode-hook #'riccardo/org-update-latex-preview-background-color))
+  :ensure nil
+  :defines default-justification
+  :hook ((org-mode . flyspell-mode)
+         (org-mode . auto-fill-mode)
+         (after-save . riccardo/org-tangle-on-config-save)
+         (org-babel-after-execute . riccardo/org-update-inline-images)
+         (org-mode . riccardo/org-init-setup)
+         (ediff-prepare-buffer . outline-show-all)
+         ((org-capture-mode org-src-mode) . riccardo/discard-history))
+  :bind (("C-c a" . org-agenda)
+         :map
+         org-mode-map
+         ("C-c l" . org-store-link))
+  :init
+  (setq org-agenda-files (list "~/repositories/personal/orgs"))
+  ;; capture templates
+  (setq org-capture-templates
+    '(("p" "Todo" entry (file+headline "~/repositories/personal/orgs/personal.org" "Refile")
+       "* TODO %?\n  %i\n")
+       ("r" "Todo" entry (file+headline "~/repositories/personal/orgs/knowledge.org" "Refile")
+       "* TODO %?\n  %i\n")))
+  :custom
+  (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE" "CANCELLED")))
+  (org-startup-with-inline-images nil)
+  (org-tags-column -100)
+  (org-startup-folded 'content)
+  (org-hide-emphasis-markers t)
+  (org-adapt-indentation nil)
+  (org-hide-leading-stars t)
+  (org-highlight-latex-and-related '(latex))
+  (revert-without-query '(".*\.pdf"))
+  (org-preview-latex-default-process 'dvisvgm)
+  (org-src-fontify-natively t)
+  (org-preview-latex-image-directory ".ltximg/")
+  (org-latex-listings 'minted)
+  (org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+                          ("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+                          ("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  (org-confirm-babel-evaluate nil)
+  (org-imenu-depth 8)
+  (org-log-done t)
+  (org-agenda-files '("~/Tasks"))
+  :config
+  (use-package ox-latex
+    :ensure nil)
+  (use-package ox-hugo
+    :after ox)
+  (when (not (version<= org-version "9.1.9"))
+    (use-package org-tempo
+      :ensure nil))
+  (font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-+]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (defun riccardo/org-tangle-on-config-save ()
+    "Tangle source code blocks when configuration file is saved."
+    (when (string= buffer-file-name (file-truename (concat user-emacs-directory "README.org")))
+      (org-babel-tangle)))
+  (defun riccardo/org-update-inline-images ()
+    "Update inline images in Org-mode."
+    (interactive)
+    (when org-inline-image-overlays
+      (org-redisplay-inline-images)))
+  (defun riccardo/org-init-setup ()
+    "Set buffer local values."
+    (setq default-justification 'full))
+  (defun riccardo/discard-history ()
+    "Discard undo history of org src and capture blocks."
+    (setq buffer-undo-list nil)
+    (set-buffer-modified-p nil))
+  (defvar minted-cache-dir
+    (file-name-as-directory
+     (expand-file-name ".minted/\\jobname"
+                       temporary-file-directory)))
+  (add-to-list 'org-latex-packages-alist
+               `(,(concat "cachedir=" minted-cache-dir)
+                 "minted" nil))
+  (add-to-list 'org-latex-logfiles-extensions "tex")
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((gnuplot . t)
+     (scheme . t)))
+  (add-to-list 'org-latex-classes
+               '("article"
+                 "\\documentclass{article}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+  (defun riccardo/org-update-latex-preview-background-color (&rest _)
+    (setq-default
+     org-format-latex-options
+     (plist-put org-format-latex-options
+                :background
+                (face-attribute (or (cadr (assq 'default face-remapping-alist))
+                                    'default)
+                                :background nil t))))
+  (add-hook 'solaire-mode-hook #'riccardo/org-update-latex-preview-background-color))
 
 (use-package prog-mode
   :ensure nil

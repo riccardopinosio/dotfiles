@@ -1309,9 +1309,8 @@ my Emacs configuration with it.
     (setq org-capture-templates
       '(("p" "Todo" entry (file+headline "~/repositories/personal/orgs/personal.org" "Refile")
          "* TODO %?\n  %i\n")
-         ("r" "Todo" entry (file+headline "~/repositories/personal/orgs/knowledge.org", "Refile"
-         "* TODO %?\n  %i\n  %a"
-))))
+         ("r" "Todo" entry (file+headline "~/repositories/personal/orgs/knowledge.org" "Refile")
+         "* TODO %?\n  %i\n")))
     :custom
     (org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE" "CANCELLED")))
     (org-startup-with-inline-images nil)
