@@ -961,6 +961,11 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :init  (setq inferior-lisp-program "sbcl")
 )
 
+(use-package poly-markdown
+:ensure t)
+(use-package poly-R
+:ensure t)
+
 (use-package help
   :ensure nil
   :custom (help-window-select t))

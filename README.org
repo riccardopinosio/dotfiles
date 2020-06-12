@@ -1561,6 +1561,17 @@ I need facilities to program in common lisp:
 )
 #+end_src
 
+** Polymode
+I want  to be  able to  use R  markdown in  ESS. For  this I  need the
+polymode and poly-R packages:
+
+#+begin_src emacs-lisp
+(use-package poly-markdown
+:ensure t)
+(use-package poly-R
+:ensure t)
+#+end_src
+
 * Tools
 Additional  packages  that  change  how Emacs  works,  providing  more
 comfortable user experience.
