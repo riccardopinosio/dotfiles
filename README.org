@@ -1395,6 +1395,20 @@ my Emacs configuration with it.
     (add-hook 'solaire-mode-hook #'riccardo/org-update-latex-preview-background-color))
 #+end_src
 
+I need to  add these lines to get  babel to run the chunks  of code in
+these languages when  I use org-mode (I prefer  polymode for research,
+and org mode for my personal knowledge base).
+
+#+begin_src
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (python . t)
+   (shell . t)
+   (R . t)
+   ))
+#+end_src
+
 ** Prog Mode
 This isn't really a configuration of  Prog Mode itself, but some hooks
 that change how  programming related modes behave. One  feature that I
