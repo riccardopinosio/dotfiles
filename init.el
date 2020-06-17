@@ -860,6 +860,16 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
                                 :background nil t))))
   (add-hook 'solaire-mode-hook #'riccardo/org-update-latex-preview-background-color))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (python . t)
+   (shell . t)
+   (R . t)
+   ))
+
+(setq org-startup-with-inline-images t)
+
 (use-package prog-mode
   :ensure nil
   :hook ((prog-mode . show-paren-mode)

@@ -1399,7 +1399,7 @@ I need to  add these lines to get  babel to run the chunks  of code in
 these languages when  I use org-mode (I prefer  polymode for research,
 and org mode for my personal knowledge base).
 
-#+begin_src
+#+begin_src emacs-lisp
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
@@ -1407,6 +1407,12 @@ and org mode for my personal knowledge base).
    (shell . t)
    (R . t)
    ))
+#+end_src
+
+Additional org mode options for images
+
+#+begin_src emacs-lisp
+(setq org-startup-with-inline-images t)
 #+end_src
 
 ** Prog Mode

@@ -88,7 +88,7 @@
  '(org-tags-column -100 t)
  '(org-todo-keywords
    '((sequence "TODO" "DOING" "BLOCKED" "|" "DONE" "CANCELLED")) t)
- '(package-last-refresh-date "2020-06-14T00:02")
+ '(package-last-refresh-date "2020-06-17T16:36")
  '(package-selected-packages
    '(poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package))
  '(parinfer-extensions '(defaults pretty-parens smart-tab smart-yank) t)
