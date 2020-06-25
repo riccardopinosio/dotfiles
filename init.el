@@ -869,6 +869,9 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
    ))
 
 (setq org-startup-with-inline-images t)
+; image sizes I fix in the documents
+(setq org-image-actual-width nil)
+(setq org-image-actual-height nil)
 
 (use-package prog-mode
   :ensure nil

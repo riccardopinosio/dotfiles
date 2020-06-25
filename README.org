@@ -1413,6 +1413,9 @@ Additional org mode options for images
 
 #+begin_src emacs-lisp
 (setq org-startup-with-inline-images t)
+; image sizes I fix in the documents
+(setq org-image-actual-width nil)
+(setq org-image-actual-height nil)
 #+end_src
 
 ** Prog Mode
