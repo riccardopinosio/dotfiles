@@ -1377,5 +1377,10 @@ Lastly, if no tabs left in the window, it is deleted with `delete-window` functi
   :config
   (add-to-list 'recentf-exclude "\\.gpg\\"))
 
+(use-package ox-hugo
+  :ensure t
+  :after ox
+)
+
 (provide 'init)
 ;;; init.el ends here

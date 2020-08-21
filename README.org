@@ -2185,6 +2185,16 @@ Settings to =recentf= mode.
     (add-to-list 'recentf-exclude "\\.gpg\\"))
 #+end_src
 
+** ox-hugo
+I use ox-hugo for writing blogposts:
+
+#+begin_src emacs-lisp
+(use-package ox-hugo
+  :ensure t
+  :after ox
+)
+#+end_src
+
 * Postscript
 #+begin_src emacs-lisp
   (provide 'init)
