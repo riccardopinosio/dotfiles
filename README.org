@@ -865,7 +865,7 @@ for some reason.
   (setq-default frame-title-format '("%b — Emacs"))
 #+end_src
 
-** Treemacs
+** COMMENT Treemacs
 To make Emacs look more like  a traditional modern text editor we need
 a file explorer.  Emacs has  builtin package for this, named =speedbar=,
 but It uses external frame and has  so many features that I don't know
