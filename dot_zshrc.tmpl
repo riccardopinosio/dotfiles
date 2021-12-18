@@ -114,8 +114,11 @@ source $ZSH/oh-my-zsh.sh
 # CUSTOMIZATIONS
 
 source ~/.aliases
+
+{{ if eq .chezmoi.os "darwin" -}}
+alias chezmoi='$HOME/bin/chezmoi'
+{{ end -}}
+
 #locales
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
-
