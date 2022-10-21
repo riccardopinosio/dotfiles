@@ -260,6 +260,12 @@ startup, and  to configure  both built in  and external  packages, and
 have  all   benefits  provided   by  =use-package=  such   as  deferring
 configuration, encapsulating configuration, and so on.
 
+* Tab evil mode fix
+
+#+begin_src emacs-lisp
+  (setq evil-want-C-i-jump nil)
+#+end_src
+
 * Defaults
 Emacs is  old. I  understand that  back then  it could  be appropriate
 decisions,  but as  of today  they are  completely obliterated  by the

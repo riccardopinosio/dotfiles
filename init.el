@@ -58,6 +58,8 @@ needed to trigger automatic refresh before calling `package-install'."
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(setq evil-want-C-i-jump nil)
+
 (use-package startup
   :no-require t
   :ensure nil

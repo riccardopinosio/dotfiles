@@ -10,8 +10,6 @@
  '(create-lockfiles nil)
  '(custom-file "~/.emacs.d/custom.el")
  '(default-input-method 'russian-computer)
- '(doom-themes-enable-bold t nil nil "Customized with use-package doom-themes")
- '(doom-themes-enable-italic t nil nil "Customized with use-package doom-themes")
  '(geiser-active-implementations '(guile))
  '(geiser-default-implementation 'guile)
  '(inhibit-startup-screen t nil nil "Customized with use-package startup")
@@ -27,8 +25,7 @@
  '(lsp-ui-imenu-enable nil)
  '(lsp-ui-sideline-enable nil)
  '(nrepl-hide-special-buffers t t)
- '(org-agenda-files '("~/Repositories/orgs/master.org") nil nil "Customized with use-package org")
- '(package-last-refresh-date "2021-05-31T12:01")
+ '(package-last-refresh-date "2022-10-19T16:46")
  '(package-selected-packages
    '(sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package))
  '(parinfer-extensions '(defaults pretty-parens smart-tab smart-yank) t)
