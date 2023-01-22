@@ -1,7 +1,7 @@
 (undo-tree-save-format-version . 1)
-"869aa0e820d71147bb305a582db140e77d34df12"
-[nil nil nil nil (25424 3688 166066 619000) 0 nil]
-([nil current ((2000 . 2670) (#("(custom-set-faces
+"51e27ba78141fb524b9419be1dece794ca246b26"
+[nil nil nil nil (25534 58986 661056 731000) 0 nil]
+([nil nil ((2060 . 2730) (#("(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -11,8 +11,8 @@
  '(cider-fragile-button-face ((t (:box (:line-width -1 :color nil :style nil) :inherit (font-lock-warning-face)))))
  '(cider-fringe-face ((t (:inherit flymake-warning))))
  '(cider-instrumented-face ((t (:box (:line-width -1 :color \"#ff6c6b\" :style nil)))))
- '(parinfer--error-face ((t (:inherit (flymake-error))))))" 0 670 (fontified nil)) . -2000) (1790 . 1999) (#("
-" 0 1 (fontified nil)) . -1790) (1203 . 1791) (#(" " 0 1 (fontified nil)) . 1203) (1 . 1204) (#("(custom-set-variables
+ '(parinfer--error-face ((t (:inherit (flymake-error))))))" 0 670 (fontified nil)) . -2060) (1836 . 2059) (1250 . 1253) (#("
+" 0 1 (fontified nil)) . -1833) (1249 . 1250) (1832 . 1833) (1248 . 1249) (#(" " 0 1 (fontified nil)) . 1248) (1238 . 1832) (#(" " 0 1 (fontified nil)) . 1238) (1 . 1239) (#("(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -23,27 +23,163 @@
  '(confirm-kill-processes nil)
  '(create-lockfiles nil)
  '(custom-file \"~/.emacs.d/custom.el\")
- '(default-input-method 'russian-computer)
- '(doom-themes-enable-bold t nil nil \"Customized with use-package doom-themes\")
- '(doom-themes-enable-italic t nil nil \"Customized with use-package doom-themes\")
- '(geiser-active-implementations '(guile))
- '(geiser-default-implementation 'guile)
+ '(default-input-method (quote russian-computer))
+ '(geiser-active-implementations (quote (guile)))
+ '(geiser-default-implementation (quote guile))
  '(lsp-completion-provider t)
  '(lsp-enable-symbol-highlighting nil)
  '(lsp-keymap-prefix \"C-c l\")
  '(lsp-rust-clippy-preference \"on\")
- '(lsp-rust-server 'rust-analyzer)
+ '(lsp-rust-server (quote rust-analyzer))
  '(lsp-ui-doc-border \"#1d2026\")
  '(lsp-ui-doc-delay 0.7)
  '(lsp-ui-imenu-enable nil)
  '(lsp-ui-sideline-enable nil)
  '(nrepl-hide-special-buffers t t)
- '(org-agenda-files '(\"~/Repositories/orgs/master.org\") nil nil \"Customized with use-package org\")
- '(package-last-refresh-date \"2022-10-19T16:46\")
+ '(package-last-refresh-date \"2023-01-11T17:38\")
  '(package-selected-packages
-   '(sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package))
- '(parinfer-extensions '(defaults pretty-parens smart-tab smart-yank) t)
- '(solaire-mode-real-buffer-fn 'aorst/real-buffer-p)
+   (quote
+    (sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
+ '(parinfer-extensions (quote (defaults pretty-parens smart-tab smart-yank)) t)
+ '(solaire-mode-real-buffer-fn (quote aorst/real-buffer-p))
  '(user-full-name \"Riccardo Pinosio\")
- '(user-mail-address \"rpinosio@gmail.com\"))" 0 2020 (fontified nil)) . -1) (t 25424 3552 75448 179000)) nil (25424 3688 166062 101000) 0 nil])
+ '(user-mail-address \"rpinosio@gmail.com\"))" 0 1812 (fontified nil)) . -1) (t 25534 58870 241767 112000)) nil (25534 58986 661050 350000) 0 nil])
+([nil nil ((2060 . 2730) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cider-deprecated-face ((t (:inherit smerge-upper))))
+ '(cider-error-highlight-face ((t (:inherit flymake-error))))
+ '(cider-fragile-button-face ((t (:box (:line-width -1 :color nil :style nil) :inherit (font-lock-warning-face)))))
+ '(cider-fringe-face ((t (:inherit flymake-warning))))
+ '(cider-instrumented-face ((t (:box (:line-width -1 :color \"#ff6c6b\" :style nil)))))
+ '(parinfer--error-face ((t (:inherit (flymake-error))))))" 0 670 (fontified nil)) . -2060) (1836 . 2059) (1250 . 1253) (#("
+" 0 1 (fontified nil)) . -1833) (1249 . 1250) (1832 . 1833) (1248 . 1249) (#(" " 0 1 (fontified nil)) . 1248) (1238 . 1832) (#(" " 0 1 (fontified nil)) . 1238) (1 . 1239) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(cider-repl-display-help-banner nil t)
+ '(cider-repl-tab-command nil t)
+ '(confirm-kill-processes nil)
+ '(create-lockfiles nil)
+ '(custom-file \"~/.emacs.d/custom.el\")
+ '(default-input-method (quote russian-computer))
+ '(geiser-active-implementations (quote (guile)))
+ '(geiser-default-implementation (quote guile))
+ '(inhibit-startup-screen t nil nil \"Customized with use-package startup\")
+ '(initial-major-mode (quote fundamental-mode) nil nil \"Customized with use-package startup\")
+ '(initial-scratch-message \"\" nil nil \"Customized with use-package startup\")
+ '(lsp-completion-provider t)
+ '(lsp-enable-symbol-highlighting nil)
+ '(lsp-keymap-prefix \"C-c l\")
+ '(lsp-rust-clippy-preference \"on\")
+ '(lsp-rust-server (quote rust-analyzer))
+ '(lsp-ui-doc-border \"#1d2026\")
+ '(lsp-ui-doc-delay 0.7)
+ '(lsp-ui-imenu-enable nil)
+ '(lsp-ui-sideline-enable nil)
+ '(nrepl-hide-special-buffers t t)
+ '(package-last-refresh-date \"2023-01-11T17:38\")
+ '(package-selected-packages
+   (quote
+    (sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
+ '(parinfer-extensions (quote (defaults pretty-parens smart-tab smart-yank)) t)
+ '(solaire-mode-real-buffer-fn (quote aorst/real-buffer-p))
+ '(user-full-name \"Riccardo Pinosio\")
+ '(user-mail-address \"rpinosio@gmail.com\"))" 0 2058 (fontified nil)) . -1) (t 25534 58986 658314 641000)) nil (25545 36721 609641 454000) 0 nil])
+([nil nil ((2069 . 2739) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cider-deprecated-face ((t (:inherit smerge-upper))))
+ '(cider-error-highlight-face ((t (:inherit flymake-error))))
+ '(cider-fragile-button-face ((t (:box (:line-width -1 :color nil :style nil) :inherit (font-lock-warning-face)))))
+ '(cider-fringe-face ((t (:inherit flymake-warning))))
+ '(cider-instrumented-face ((t (:box (:line-width -1 :color \"#ff6c6b\" :style nil)))))
+ '(parinfer--error-face ((t (:inherit (flymake-error))))))" 0 670 (fontified nil)) . -2069) (1845 . 2068) (1250 . 1253) (#("
+" 0 1 (fontified nil)) . -1842) (1249 . 1250) (1841 . 1842) (1248 . 1249) (#(" " 0 1 (fontified nil)) . 1248) (1238 . 1841) (#(" " 0 1 (fontified nil)) . 1238) (1 . 1239) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(cider-repl-display-help-banner nil t)
+ '(cider-repl-tab-command nil t)
+ '(confirm-kill-processes nil)
+ '(create-lockfiles nil)
+ '(custom-file \"~/.emacs.d/custom.el\")
+ '(default-input-method (quote russian-computer))
+ '(geiser-active-implementations (quote (guile)))
+ '(geiser-default-implementation (quote guile))
+ '(inhibit-startup-screen t nil nil \"Customized with use-package startup\")
+ '(initial-major-mode (quote fundamental-mode) nil nil \"Customized with use-package startup\")
+ '(initial-scratch-message \"\" nil nil \"Customized with use-package startup\")
+ '(lsp-completion-provider t)
+ '(lsp-enable-symbol-highlighting nil)
+ '(lsp-keymap-prefix \"C-c l\")
+ '(lsp-rust-clippy-preference \"on\")
+ '(lsp-rust-server (quote rust-analyzer))
+ '(lsp-ui-doc-border \"#1d2026\")
+ '(lsp-ui-doc-delay 0.7)
+ '(lsp-ui-imenu-enable nil)
+ '(lsp-ui-sideline-enable nil)
+ '(nrepl-hide-special-buffers t t)
+ '(package-last-refresh-date \"2023-01-19T19:44\")
+ '(package-selected-packages
+   (quote
+    (sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
+ '(parinfer-extensions (quote (defaults pretty-parens smart-tab smart-yank)) t)
+ '(solaire-mode-real-buffer-fn (quote aorst/real-buffer-p))
+ '(user-full-name \"Riccardo Pinosio\")
+ '(user-mail-address \"rpinosio@gmail.com\"))" 0 2058 (fontified nil)) . -1) (t 25545 36721 616366 742000)) nil (25545 36721 727910 569000) 0 nil])
+([nil current ((2069 . 2739) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cider-deprecated-face ((t (:inherit smerge-upper))))
+ '(cider-error-highlight-face ((t (:inherit flymake-error))))
+ '(cider-fragile-button-face ((t (:box (:line-width -1 :color nil :style nil) :inherit (font-lock-warning-face)))))
+ '(cider-fringe-face ((t (:inherit flymake-warning))))
+ '(cider-instrumented-face ((t (:box (:line-width -1 :color \"#ff6c6b\" :style nil)))))
+ '(parinfer--error-face ((t (:inherit (flymake-error))))))" 0 670 (fontified nil)) . -2069) (1845 . 2068) (1250 . 1253) (#("
+" 0 1 (fontified nil)) . -1842) (1249 . 1250) (1841 . 1842) (1248 . 1249) (#(" " 0 1 (fontified nil)) . 1248) (1238 . 1841) (#(" " 0 1 (fontified nil)) . 1238) (1 . 1239) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(cider-repl-display-help-banner nil t)
+ '(cider-repl-tab-command nil t)
+ '(confirm-kill-processes nil)
+ '(create-lockfiles nil)
+ '(custom-file \"~/.emacs.d/custom.el\")
+ '(default-input-method (quote russian-computer))
+ '(geiser-active-implementations (quote (guile)))
+ '(geiser-default-implementation (quote guile))
+ '(inhibit-startup-screen t nil nil \"Customized with use-package startup\")
+ '(initial-major-mode (quote fundamental-mode) nil nil \"Customized with use-package startup\")
+ '(initial-scratch-message \"\" nil nil \"Customized with use-package startup\")
+ '(lsp-completion-provider t)
+ '(lsp-enable-symbol-highlighting nil)
+ '(lsp-keymap-prefix \"C-c l\")
+ '(lsp-rust-clippy-preference \"on\")
+ '(lsp-rust-server (quote rust-analyzer))
+ '(lsp-ui-doc-border \"#1d2026\")
+ '(lsp-ui-doc-delay 0.7)
+ '(lsp-ui-imenu-enable nil)
+ '(lsp-ui-sideline-enable nil)
+ '(nrepl-hide-special-buffers t t)
+ '(package-last-refresh-date \"2023-01-19T19:44\")
+ '(package-selected-packages
+   (quote
+    (org-roam sly jupyter poly-R poly-markdown slime ein pyvenv ess lsp-python-ms which-key dap-PYTHON dap-python dap-mode lsp-treemacs lsp-ivy evil multi-term treemacs-magit separedit edit-indirect clang-format lsp-ui lsp-mode iedit expand-region mc-extras multiple-cursors magit yasnippet undo-tree company-posframe company ivy-posframe counsel ivy flx selected paredit geiser editorconfig vterm lua-mode fennel-mode cider clojure-mode yaml-mode cmake-mode racket-mode toml-mode rust-mode markdown-mode ox-hugo minions treemacs doom-modeline solaire-mode doom-themes all-the-icons use-package)))
+ '(parinfer-extensions (quote (defaults pretty-parens smart-tab smart-yank)) t)
+ '(solaire-mode-real-buffer-fn (quote aorst/real-buffer-p))
+ '(user-full-name \"Riccardo Pinosio\")
+ '(user-mail-address \"rpinosio@gmail.com\"))" 0 2067 (fontified nil)) . -1) (t 25545 36721 736364 974000)) nil (25545 37290 261174 521000) 0 nil])
 nil
