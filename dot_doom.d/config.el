@@ -40,12 +40,17 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/braindump/")
+
+(after! org
+  :custom
+  (setq org-startup-folded t)
+  )
 
 (after! org-roam
   :ensure t
   :custom
-  (setq org-roam-directory (file-truename "~/testroam"))
+  (setq org-roam-directory (file-truename "~/braindump"))
   (setq org-roam-dailies-directory "daily/")
   (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
@@ -68,6 +73,15 @@
             :target (file+head "meetings/%<%Y%m%d%H%M%S>-${slug}.org"
                                ":PROPERTIES:\n:project: fill\n:people: fill\n:END:\n#+title: ${title}\n#+filetags:")
             :unnarrowed t)
+            ("t" "main" plain "%?"
+            :target (file+head "main/%<%Y%m%d%H%M%S>-${slug}.org"
+                               "#+title: ${title}\n#+filetags:")
+            :unnarrowed t)
+                ("r" "reference" plain "%?"
+                :if-new
+                (file+head "reference/${title}.org" "#+title: ${title}\n")
+                :immediate-finish t
+                :unnarrowed t)
       ))
   :config
   (org-roam-db-autosync-enable)
@@ -88,26 +102,59 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
-;; personal functions
+;; CITATIONS
 
-(defun riccardo/paste-todo-a ()
+(after! oc
+(setq org-cite-global-bibliography '("~/braindump/references.bib"))
+  )
+
+
+;; Use `citar' with `org-cite'
+;;
+(use-package! citar
+  :after oc
+  :custom
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography '("~/braindump/references.bib"))
+;;  (citar-org-roam-note-title-template "${author}")
+  :bind
+  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+  )
+
+
+;; OTHER PERSONAL FUNCTIONS
+;;
+
+
+(defun riccardo/paste-excursion (tag)
   (interactive)
   (save-excursion
-  (insert "* TODO  :life_admin:")
-  )
+    (insert "* TODO  :" tag ":")
+    )
   (forward-char 7)
   (evil-insert-state)
   )
+
 
 (defhydra riccardo/todo (nil nil :foreign-keys nil :hint nil :exit t)
   "
 Select todo type:
 ----------------------
 _a_ life admin
+_l_ learning
+_r_ research
+_w_ work
+_s_ systems
 
 _q_ quit"
   ("q" nil)
-  ("a" riccardo/paste-todo-a)
+  ("a" (riccardo/paste-excursion "admin"))
+  ("l" (riccardo/paste-excursion "learning"))
+  ("r" (riccardo/paste-excursion "research"))
+  ("w" (riccardo/paste-excursion "work"))
+  ("s" (riccardo/paste-excursion "systems"))
   )
 
 (defhydra riccardo/daily (nil nil :foreign-keys nil :hint nil :exit t)
@@ -123,6 +170,24 @@ _q_ quit"
 
 (map! :leader :desc "create todo" "t" #'riccardo/todo/body)
 (map! :leader :desc "dailies" "d" #'riccardo/daily/body)
+
+(defun riccardo/rename-current-buffer-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let* ((name (buffer-name))
+        (filename (buffer-file-name))
+        (basename (file-name-nondirectory filename)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " (file-name-directory filename) basename nil basename)))
+        (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                   name (file-name-nondirectory new-name)))))))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
