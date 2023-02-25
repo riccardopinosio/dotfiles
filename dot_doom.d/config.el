@@ -38,18 +38,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/braindump/")
-
-(after! org
-  :custom
-  (org-link-set-parameters "zotero" :follow
-                           (lambda (zpath)
-                             (browse-url
-                              (format "zotero:%s" zpath)
-                              )))
-  )
 
 (after! org-roam
   :ensure t
@@ -81,6 +69,10 @@
            :target (file+head "main/%<%Y%m%d%H%M%S>-${slug}.org"
                               "#+title: ${title}\n#+filetags:")
            :unnarrowed t)
+          ("a" "article" plain "%?"
+           :target (file+head "articles/${title}-${slug}.org"
+                              "#+title: ${title}\n#+filetags: articles")
+           :unnarrowed t)
           ))
   :config
   (org-roam-db-autosync-enable)
@@ -101,19 +93,10 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
-;; CITATIONS
+;; CITATIONS AND ZOTERO NOTES
 
 (after! oc
 (setq org-cite-global-bibliography '("~/braindump/references.bib")))
-
-;;(defun riccardo/format-citar-file (file)
-;;  (let* ((parts (split-string file ";"))
-;;        (ret (cl-loop for str in parts
-;;                       ;;if (string-suffix-p ".pdf" str)
-;;                       collect str)))
-;;    (setq paths "")
-;;    (dolist (path ret) (setq paths (concat paths " " "[[" path "]]")))
-;;    paths))
 
 ;; Use `citar' with `org-cite'
 ;;
@@ -142,131 +125,248 @@
 
 ;; link zotero annotations
 
-(defun riccardo/grab-reference-items (citekey item-list)
-  (with-temp-buffer
-    (insert-file-contents (nth 0 citar-bibliography))
-    (let* ((citekey-start (search-forward citekey nil nil))
-           (citekey-start (if citekey-start (line-beginning-position)
-                            nil))
-           (citekey-end (if citekey-start (search-forward "@" nil nil)
-                          nil)))
-      (mapcar (lambda (item-name)
-                (let* (
-                       (item-start (if citekey-start (progn (goto-char citekey-start)
-                                                            (search-forward (format "%s = {" item-name)
-                                                                            citekey-end t))
-                                     nil
-                                     ))
-                       (item-end (if item-start (progn (up-list) (point)) nil)))
-                  (if item-start
-                      (buffer-substring-no-properties item-start item-end)
-                    "")))
-              item-list)
-    )))
-
 (defun riccardo/parse-annotation-par (el)
+  "given a single \par annotation, extract its attributes"
   (let* ((match (string-match ".*(\\(.*\\),\\(.*\\),.*p.\s\\([0-9]+\\))\\(.*\\)" el))
-        (components (when match
-                      (list :author (match-string 1 el)
-                            :year (match-string 2 el)
-                            :page (match-string 3 el)
-                            :content (match-string 4 el)
-                            :quote (let ((match (string-match ".*``\\(.*\\)''" el)))
-                                     (when match (match-string 1 el)))
-                            )
-                      )))
-    components
-    )
-  )
+         (components (when match
+                       (list :author (match-string 1 el)
+                             :year (match-string 2 el)
+                             :page (match-string 3 el)
+                             :content (match-string 4 el)
+                             :quote (let ((match (string-match ".*``\\(.*\\)''" el)))
+                                      (when match (match-string 1 el)))))))
+    components))
 
 (defun riccardo/parse-annotation-components (annotation-section url)
+  "given an annotation with multiple notes separated by \par elements, extract the time information of the
+   annotation and, for each \par note, its attributes, among which its content"
   (let* ((match (string-match ".*(\\([0-9]+\\)/\\([0-9]+\\)/\\([0-9]+\\),\s\\(.+\\))" annotation-section))
          (annotation-attributes (list :year (match-string 3 annotation-section)
-                                :month (match-string 2 annotation-section)
-                                :day (match-string 1 annotation-section)
-                                :timestamp (match-string 4 annotation-section)))
-         (url (replace-regexp-in-string "?.*" "" url))
-         )
-    (setq annotation-pars (remq nil (mapcar #'riccardo/parse-annotation-par
-                                            (split-string annotation-section "\par[\s\n]+"))))
+                                      :month (match-string 2 annotation-section)
+                                      :day (match-string 1 annotation-section)
+                                      :timestamp (match-string 4 annotation-section)))
+         (url (replace-regexp-in-string "?.*" "" url)))
+
+    (setq annotation-pars (remq nil (mapcar #'riccardo/parse-annotation-par (split-string annotation-section "\par[\s\n]+"))))
     (setq annotation-pars (mapconcat (lambda (el)
-                             (let* ((quote (plist-get el :quote))
-                                    (page (plist-get el :page))
-                                    (content (plist-get el :content))
-                                    (url (concat url (format "?p%s" page))))
-                               (concat (format "*** [[%s][note p%s]]\n"
-                                               url
-                                               page)
-                                       (when quote
-                                         (format "#+BEGIN_QUOTE\n%s\n#+END_QUOTE\n" quote))
-                                       (when content content))))
-                           annotation-pars "\n"))
+                                       (let* ((quote (plist-get el :quote))
+                                              (page (plist-get el :page))
+                                              (content (plist-get el :content))
+                                              (url (concat url (format "?p%s" page))))
+                                         (concat (format "*** [[%s][note p%s]]\n"
+                                                         url
+                                                         page)
+                                                 (when quote
+                                                   (format "#+BEGIN_QUOTE\n%s\n#+END_QUOTE\n" quote))
+                                                 (when content content))))
+                                     annotation-pars "\n"))
     ;; format note for display
     (format "** (%s-%s-%s), %s:\n%s"
             (plist-get annotation-attributes :year)
             (plist-get annotation-attributes :month)
             (plist-get annotation-attributes :day)
             (plist-get annotation-attributes :timestamp)
-            annotation-pars
-            )
-    ))
+            annotation-pars)))
 
 
 (defun riccardo/parse-zotero-notes (notes url)
-  "tst"
+  "Given a string with the zotero notes, split it into sections (one per annotation) and parse it"
   (let* ((annotation-sections (split-string notes "\section"))
-        (annotation-sections (seq-filter (lambda (el) (string-match-p (regexp-quote "Annotation")
-                                                          el)) annotation-sections))
-        (notes-parsed (mapcar (lambda (el) (riccardo/parse-annotation-components el url)) annotation-sections)))
-    (mapconcat 'identity notes-parsed "\n")
-    )
-  )
+         (annotation-sections (seq-filter (lambda (el) (string-match-p (regexp-quote "Annotation")
+                                                                       el)) annotation-sections))
+         (notes-parsed (mapcar (lambda (el) (riccardo/parse-annotation-components el url)) annotation-sections)))
+    (mapconcat 'identity notes-parsed "\n")))
 
 (defun riccardo/create-zotero-notes (notes file-url)
-  (let* ((notes (riccardo/parse-zotero-notes notes file-url))
+  "create a string with the zotero notes and insert it"
+  (let* ((notes (riccardo/parse-zotero-notes notes file-url)) ;; parse the notes
          (data (org-element-parse-buffer 'greater-elements))
-         (begin-zotero-headline (org-element-map data 'headline
+         (zotero-headline-bounds (org-element-map data 'headline
                           (lambda (el)
                             (and (string= "zotero notes" (org-element-property :raw-value el))
-                            (org-element-property :begin el))
-                            )
-                          nil t))
-         (end-zotero-headline (org-element-map data 'headline
-                          (lambda (el)
-                            (and (string= "zotero notes" (org-element-property :raw-value el))
-                            (org-element-property :end el))
-                            )
+                            (list (org-element-property :begin el) (org-element-property :end el))))
                           nil t)))
-  (if begin-zotero-headline (delete-region begin-zotero-headline end-zotero-headline))
+  (if (nth 0 zotero-headline-bounds) (delete-region (nth 0 zotero-headline-bounds) (nth 1 zotero-headline-bounds)))
   (save-excursion
     (goto-char (point-max))
-    (insert "* zotero notes\n" notes))
-  )
-  )
+    (insert "* zotero notes\n" notes)
+    )))
 
-(defun riccardo/update-references ()
+(defun riccardo/grab-reference-items (citekey item-list)
+  "Retrieve the items in item-list from the citekey"
+  (with-temp-buffer
+    (mapc (lambda (reference-file) (insert-file-contents reference-file))  citar-bibliography)
+    (let* ((citekey-start (search-forward citekey nil nil))
+           (citekey-start (if citekey-start (line-beginning-position) nil))
+           (citekey-end (if citekey-start (search-forward "@" nil nil) nil)))
+      (mapcar (lambda (item-name)
+                (let* ((item-start (if citekey-start (progn (goto-char citekey-start)
+                                                            (search-forward (format "%s = {" item-name)
+                                                                            citekey-end t))
+                                     nil))
+                       (item-end (if item-start (progn (up-list) (point)) nil)))
+                  (if item-start
+                      (buffer-substring-no-properties item-start item-end)
+                    "")))
+              item-list))))
+
+(defun riccardo/update-zotero-notes ()
+  "Update the ORG headline with the zotero notes for this reference"
   (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (let* ((start-reference (search-forward ":ROAM_REFS: @" nil t))
-           (end-reference (progn
-                            (forward-word)
-                            (point))))
-      (if (and start-reference end-reference)
-          (let* ((citekey (buffer-substring-no-properties start-reference end-reference))
-                 (zotero-notes (riccardo/grab-reference-items citekey '(note file)))
-                 )
-            (riccardo/create-zotero-notes (nth 0 zotero-notes) (nth 1 zotero-notes))
-                 )))))
+  (when (get-buffer-window)
+    (save-excursion
+      (goto-char (point-min))
+      (let* ((start-reference (search-forward ":ROAM_REFS: @" nil t))
+             (end-reference (progn
+                              (forward-word)
+                              (point))))
+        (if (and start-reference end-reference)
+            (let* ((citekey (buffer-substring-no-properties start-reference end-reference))
+                   (zotero-notes (riccardo/grab-reference-items citekey '(note file))))
+              (riccardo/create-zotero-notes (nth 0 zotero-notes) (nth 1 zotero-notes))))))))
 
-(add-hook 'find-file-hook #'riccardo/update-references)
-(add-hook 'after-save-hook #'riccardo/update-references)
+(add-hook 'find-file-hook #'riccardo/update-zotero-notes)
+(add-hook 'after-save-hook #'riccardo/update-zotero-notes)
 
-;; deal with zotero notes
+
+;; QUARTO AND ORG MODE
+
+(setq blog-folder "~/repositories/misc/website/blog/")
+
+(defun org-qmd-format-tags (tags)
+  "format filetags for inclusion in qmd front-matter"
+  (let ((tags-list (split-string tags " ")))
+    (format "tags: %s"
+            (concat "[" (mapconcat 'identity tags-list ", ") "]"))))
+
+(defun org-qmd-get-lang-name (lang)
+  (cond ((string= lang "emacs-lisp") "commonlisp")
+        (t lang)))
+
+(defun org-qmd-src-block (src-block contents info)
+  "Transcode SRC-BLOCK element into Github Flavored Markdown
+format. CONTENTS is nil.  INFO is a plist used as a communication
+channel. Lifted from org-gfm."
+  (let* ((lang (org-qmd-get-lang-name (org-element-property :language src-block)))
+         (code (org-export-format-code-default src-block info))
+         (prefix (concat "```" lang "\n"))
+         (suffix "```"))
+    (concat prefix code suffix)))
+
+
+(defun org-qmd-format-attr-org (attr-org)
+  (mapconcat (lambda (el)
+               (let* ((parts (split-string el " "))
+                      (key (substring (nth 0 parts) 1))
+                      (val (nth 1 parts)))
+                 (cond ((string= key "width") (format "%s=%s" key val))
+                       (t "")))) attr-org " "))
+
+(defun org-qmd-link (link desc info)
+  (let* ((parent (org-element-property :parent link))
+         (attr-org (org-element-property :attr_org parent))
+         (trans-link (org-md-link link desc info)))
+    (if attr-org
+        (concat trans-link "{" (org-qmd-format-attr-org attr-org) "}") ;; parse and format the attr_org
+      trans-link)))
+
+(defun org-qmd-template (contents info)
+  "add front matter to the markdown file"
+  (let* ((front-matter-properties (mapcar (lambda (el)
+                                            (cons (substring el 1)
+                                                  (org-export-data (plist-get info (intern el)) info)))
+                                          '(":title"
+                                            ":author"
+                                            ":date"
+                                            ":description"
+                                            ":filetags")))
+         (front-matter-lines (mapcar (lambda (el)
+                                       (cond ((string= (car el) "filetags") (org-qmd-format-tags (cdr el)))
+                                             (t (format "%s: %s" (car el) (cdr el)))))
+                                     front-matter-properties)))
+    (concat "---\n" (mapconcat 'identity front-matter-lines "\n") "\n---\n" contents)))
+
+(defun qmd-export ()
+  "export org to qmd in a buffer"
+  (interactive)
+  (org-export-to-buffer 'qmd "*qmd*"))
+
+(defun org-qmd-export-to-markdown (&optional async subtreep visible-only)
+  "Export current buffer to a Github Flavored Markdown file.
+If narrowing is active in the current buffer, only export its
+narrowed part.
+If a region is active, export that region.
+A non-nil optional argument ASYNC means the process should happen
+asynchronously.  The resulting file should be accessible through
+the `org-export-stack' interface.
+When optional argument SUBTREEP is non-nil, export the sub-tree
+at point, extracting information from the headline properties
+first.
+When optional argument VISIBLE-ONLY is non-nil, don't export
+contents of hidden elements.
+Return output file's name."
+  (interactive)
+  (let ((outfile (org-export-output-file-name ".qmd" subtreep)))
+    (org-export-to-file 'qmd outfile async subtreep visible-only)))
+
+(defun org-qmd-remap-urls (data backend info)
+"Remap the url for the image links"
+(if (string-match-p (regexp-quote "[img]") data)
+    (let* ((url (string-match ".*(\\(.*\\))" data))
+           (url-match (match-string 1 data))
+           (file-name (file-name-nondirectory url-match))
+           (remapped-file-name (concat "../images/" file-name)))
+      (replace-regexp-in-string "(.*)" (format "(%s)" remapped-file-name) data))
+    data))
+
+(defun org-qmd-publish-to-qmd (plist filename pub-dir)
+  "Publish an org file to Markdown.
+FILENAME is the filename of the Org file to be published.  PLIST
+is the property list for the given project.  PUB-DIR is the
+publishing directory.
+Return output file name."
+  (org-publish-org-to 'qmd filename ".qmd" plist pub-dir))
+
+(defun org-qmd-publish-to-qmp-remap (plist filename pub-dir)
+  "Publish to markdown but remap urls"
+  (let ((org-export-filter-link-functions (list 'org-qmd-remap-urls)))
+    (org-qmd-publish-to-qmd plist filename pub-dir)))
+
+;; setup org mode
+
+(require 'ox)
+
+(setq org-directory "~/braindump/")
+
+(after! org
+  :custom
+  (org-link-set-parameters "zotero" :follow
+                           (lambda (zpath)
+                             (browse-url
+                              (format "zotero:%s" zpath))))
+  (org-export-define-derived-backend 'qmd 'md
+  :filters-alist '((:filter-parse-tree . org-md-separate-elements))
+  :translate-alist '((inner-template . org-qmd-template)
+                     (src-block . org-qmd-src-block)
+                     (link . org-qmd-link)
+                     ))
+  (setq org-publish-project-alist
+      '(("blog-posts"
+         :base-directory "~/braindump/articles"
+         :publishing-function org-qmd-publish-to-qmd
+         :publishing-directory "~/repositories/misc/website/blog/posts"
+         :section-numbers nil
+         :with-toc nil)
+        ("blog-images"
+         :base-directory "~/braindump/images"
+         :base-extension "png\\|jpg"
+         :publishing-directory "~/repositories/misc/website/blog/images"
+         :publishing-function org-publish-attachment)
+        ("blog" :components("blog-posts" "blog-images"))))
+  (setq org-agenda-files (directory-files-recursively "~/braindump/" "\\.org$")))
 
 ;; OTHER PERSONAL FUNCTIONS
 ;;
-
 
 (defun riccardo/paste-excursion (tag)
   (interactive)
@@ -328,6 +428,8 @@ _q_ quit"
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
+
+(require 'quarto-mode)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

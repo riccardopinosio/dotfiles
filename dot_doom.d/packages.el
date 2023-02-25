@@ -52,3 +52,5 @@
 (unpin! org-roam)
 (package! org-roam-ui)
 (package! hydra)
+(package! quarto-mode)
+(package! org-ql)
