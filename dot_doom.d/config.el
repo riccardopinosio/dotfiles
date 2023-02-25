@@ -362,8 +362,21 @@ Return output file name."
          :base-extension "png\\|jpg"
          :publishing-directory "~/repositories/misc/website/blog/images"
          :publishing-function org-publish-attachment)
-        ("blog" :components("blog-posts" "blog-images"))))
+        ("blog" :components("blog-posts" "blog-images")))))
+
+;; org agenda
+(after! org
+  :custom
   (setq org-agenda-files (directory-files-recursively "~/braindump/" "\\.org$")))
+(after! org-ql
+  :custom
+  (setq org-ql-views '(("Todos" :buffers-files org-agenda-files
+                        :query (todo)
+                        :sort (date)
+                        :super-groups org-super-agenda-groups
+                        :title "Todos")))
+  (setq org-super-agenda-groups '((:auto-tags t))))
+
 
 ;; OTHER PERSONAL FUNCTIONS
 ;;
@@ -380,16 +393,18 @@ Return output file name."
 
 (defhydra riccardo/todo (nil nil :foreign-keys nil :hint nil :exit t)
   "
-Select todo type:
+Select action:
 ----------------------
-_a_ life admin
-_l_ learning
-_r_ research
-_w_ work
-_s_ systems
+_o_ todo overview
+_a_ insert todo life admin
+_l_ insert todo learning
+_r_ insert todo research
+_w_ insert todo work
+_s_ insert todo systems
 
 _q_ quit"
   ("q" nil)
+  ("o" (org-ql-view "Todos"))
   ("a" (riccardo/paste-excursion "admin"))
   ("l" (riccardo/paste-excursion "learning"))
   ("r" (riccardo/paste-excursion "research"))
