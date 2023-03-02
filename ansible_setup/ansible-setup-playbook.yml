@@ -1,0 +1,30 @@
+---
+- name: emacs
+  hosts: localhost
+  become: true
+  tasks:
+    - command: apt remove --autoremove emacs emacs-common
+    - apt_repository:
+        repo: ppa:kelleyk/emacs
+        state: present
+    - command: apt update
+    - apt:
+        name: emacs28
+        state: present
+
+- name: install syncthing
+  hosts: localhost
+  become: true
+  tasks:
+    - command: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    - command: echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    - command: apt-get update
+    - apt:
+        name: syncthing
+        state: present
+
+- name: install chezmoi and apply dotfiles
+  hosts: localhost
+  tasks:
+    - name: download chezmoi and apply dotfiles
+      command: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply riccardopinosio
