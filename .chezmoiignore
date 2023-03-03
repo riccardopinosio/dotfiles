@@ -1,5 +1,6 @@
 fonts
 rstudio-prefs.json
+ansible_setup
 
 # emacs prefs are managed as symlinks
 # vscode prefs are managed via vscode settings sync ext
