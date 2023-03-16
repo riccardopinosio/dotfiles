@@ -1,7 +1,26 @@
 ---
-- name: emacs
-  hosts: localhost
+- name: basics
+  hosts: "{{ variable_host }}"
   become: true
+  vars_files:
+    - vars.yaml
+  tasks:
+    - command: apt update
+    - apt:
+        name: zsh
+        state: present
+    - apt:
+        name: sqlite3
+        state: present
+    - apt:
+        name: clang
+        state: present
+
+- name: emacs
+  hosts: "{{ variable_host }}"
+  become: true
+  vars_files:
+    - vars.yaml
   tasks:
     - command: apt remove --autoremove emacs emacs-common
     - apt_repository:
@@ -11,20 +30,40 @@
     - apt:
         name: emacs28
         state: present
+    - apt:
+        name: ripgrep
+        state: present
+    - apt:
+        name: fd-find
+        state: present
+
+- name: doom. Only cloning, install is manual
+  hosts: " {{variable_host}} "
+  vars_files:
+    - vars.yaml
+  tasks:
+    - command: git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+      ignore_errors: true
+
+- name: miniconda
+  hosts: " {{variable_host}} "
+  vars_files:
+    - vars.yaml
+  tasks:
+    - script:
+        cmd: ../install_miniconda_linux.sh
 
 - name: install syncthing
-  hosts: localhost
+  hosts: "{{ variable_host }}"
+  vars_files:
+    - vars.yaml
   become: true
   tasks:
     - command: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-    - command: echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    - command: echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | tee /etc/apt/sources.list.d/syncthing.list
     - command: apt-get update
     - apt:
         name: syncthing
         state: present
-
-- name: install chezmoi and apply dotfiles
-  hosts: localhost
-  tasks:
-    - name: download chezmoi and apply dotfiles
-      command: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply riccardopinosio
+    - command: systemctl --user enable syncthing.service
+    - command: systemctl --user start syncthing.service

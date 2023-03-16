@@ -32,3 +32,6 @@ Library
 {{ if ne .chezmoi.os "windows" -}}
 AppData
 {{ end }}
+
+install_miniconda_mac.sh
+install_miniconda_linux.sh

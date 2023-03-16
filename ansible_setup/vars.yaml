@@ -1,0 +1,4 @@
+variable_host: dev-vm
+ansible_ssh_private_key_file: ~/.ssh/azure_develop_key.pem
+ansible_user: riccardo
+variable_host: dev-vm
