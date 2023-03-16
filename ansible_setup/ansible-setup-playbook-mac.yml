@@ -1,0 +1,40 @@
+---
+# this requires ansible and homebrew installed on the machine
+# brew install ansible
+- name: miniconda
+  hosts: localhost
+  tasks:
+    - script:
+        cmd: ../install_miniconda_mac.sh
+
+- name: emacs 
+  hosts: localhost
+  tags: emacs
+  tasks:
+    - homebrew:
+        name: ripgrep
+        state: present
+    - homebrew:
+        name: coreutils
+        state: present
+    - homebrew:
+        name: fd
+        state: present
+    - command: xcode-select --install
+      ignore_errors: true
+    - homebrew_tap:
+        name: railwaycat/emacsmacport
+    - homebrew:
+        name: emacs-mac
+        install_options: with-modules
+        state: present
+    - homebrew:
+        name: sqlite
+        state: present
+    - command: ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+
+- name: doom. Only cloning, install is manual (~/.config/emacs/bin/doom install) as it's interactive!
+  hosts: localhost
+  tags: doom
+  tasks:
+    - command: git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs

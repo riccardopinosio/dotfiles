@@ -1,4 +1,3 @@
 source .bashrc
 
 PATH=$PATH:~/bin/share
-. "$HOME/.cargo/env"
