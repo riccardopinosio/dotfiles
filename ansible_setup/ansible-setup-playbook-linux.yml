@@ -2,6 +2,8 @@
 - name: basics
   hosts: "{{ variable_host }}"
   become: true
+  tags:
+    - basics
   vars_files:
     - vars.yaml
   tasks:
@@ -15,6 +17,9 @@
     - apt:
         name: clang
         state: present
+    - user: # set zsh as default shell!
+        name: "{{ ansible_user }}"
+        shell: "/bin/zsh"
 
 - name: emacs
   hosts: "{{ variable_host }}"
