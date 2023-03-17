@@ -42,7 +42,7 @@
         name: fd-find
         state: present
 
-- name: doom. Only cloning, install is manual
+- name: doom. Only cloning, install is manual (~/.config/emacs/bin/doom install) as it's interactive!
   hosts: " {{variable_host}} "
   vars_files:
     - vars.yaml

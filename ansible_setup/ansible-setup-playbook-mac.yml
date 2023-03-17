@@ -38,3 +38,11 @@
   tags: doom
   tasks:
     - command: git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+
+- name: zotero
+  hosts: localhost
+  tags: zotero
+  tasks:
+    - homebrew_cask:
+        name: zotero
+        state: present
