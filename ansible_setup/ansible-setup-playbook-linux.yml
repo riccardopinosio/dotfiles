@@ -72,3 +72,49 @@
         state: present
     - command: systemctl --user enable syncthing.service
     - command: systemctl --user start syncthing.service
+
+- name: docker engine
+  hosts: "{{ variable_host }}"
+  vars_files:
+    - vars.yaml
+  become: true
+  tags: docker
+  tasks:
+    - file:
+        path: /etc/apt/keyrings
+        state: directory
+    - file:
+        path: /etc/apt/keyrings/docker.gpg
+        state: absent
+    - shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    - shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - command: apt-get update
+    - apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+    - file:
+        path: ~/.docker/cli-plugins
+        state: directory
+    - file:
+        path: ~/.docker/cli-plugins/docker-compose
+        state: absent 
+    - command: curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+    - command: chmod +x ~/.docker/cli-plugins/docker-compose
+    - command: "usermod -aG docker {{ ansible_user }}"
+    - shell: |
+        systemctl stop docker
+        DOCKER_VOLS="/home/{{ ansible_user }}/docker/volumes"
+        EXEC_START="ExecStart=/usr/bin/dockerd --data-root $DOCKER_VOLS -H fd:// --containerd=/run/containerd/containerd.sock"
+        sudo sed -i "s|.*ExecStart.*|${EXEC_START}|" /lib/systemd/system/docker.service
+        sudo systemctl daemon-reload
+        sudo systemctl start docker
+    - file:
+        path: "/home/{{ ansible_user }}/docker/volumes"
+        state: directory
+        recurse: true
+        owner: "{{ ansible_user }}"
+        mode: 0777
+
