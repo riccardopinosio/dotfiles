@@ -70,8 +70,8 @@
                               "#+title: ${title}\n#+filetags:")
            :unnarrowed t)
           ("a" "article" plain "%?"
-           :target (file+head "articles/${title}-${slug}.org"
-                              "#+title: ${title}\n#+filetags: articles")
+           :target (file+head "articles/${slug}.org"
+                              "#+title: ${title}\n#+filetags: articles\n#+AUTHOR: Riccardo Pinosio\n#+DATE: %<%Y-%m-%d>\n#+DESCRIPTION: description")
            :unnarrowed t)
           ))
   :config
@@ -262,13 +262,33 @@ channel. Lifted from org-gfm."
                  (cond ((string= key "width") (format "%s=%s" key val))
                        (t "")))) attr-org " "))
 
+(defun org-qmd-get-path-from-link (link)
+  (let ((match (string-match ".*(\\(.*\\))" link)))
+    (match-string 1 link)))
+
+(defun org-qmd-link-type (link-type-org path)
+  (let ((ext (file-name-extension path)))
+    (cond ((and (string= link-type-org "file") (member ext '("png" "jpeg" "jpg"))) "image" )
+          (t "unkown"))))
+
+(defun org-qmd-format-image-link (link parent)
+  (let* ((attr-org (org-element-property :attr_org parent))
+        (caption (org-element-property :caption parent))
+        (caption (if caption
+                     (nth 0 (nth 0 (nth 0 caption)))
+                   ""))
+        )
+    (format "![%s](%s){%s}" caption
+            (org-element-property :path link)
+            (org-qmd-format-attr-org attr-org))))
+
 (defun org-qmd-link (link desc info)
   (let* ((parent (org-element-property :parent link))
-         (attr-org (org-element-property :attr_org parent))
-         (trans-link (org-md-link link desc info)))
-    (if attr-org
-        (concat trans-link "{" (org-qmd-format-attr-org attr-org) "}") ;; parse and format the attr_org
-      trans-link)))
+         (link-type-org (org-element-property :type link))
+         (path (org-element-property :path link))
+         (link-type (org-qmd-link-type link-type-org path)))
+    (cond ((string= link-type "image") (org-qmd-format-image-link link parent))
+          (t (org-md-link link desc info)))))
 
 (defun org-qmd-template (contents info)
   "add front matter to the markdown file"
@@ -311,6 +331,7 @@ Return output file's name."
 
 (defun org-qmd-remap-urls (data backend info)
 "Remap the url for the image links"
+;; TODO: this needs to be fixed
 (if (string-match-p (regexp-quote "[img]") data)
     (let* ((url (string-match ".*(\\(.*\\))" data))
            (url-match (match-string 1 data))
@@ -327,7 +348,7 @@ publishing directory.
 Return output file name."
   (org-publish-org-to 'qmd filename ".qmd" plist pub-dir))
 
-(defun org-qmd-publish-to-qmp-remap (plist filename pub-dir)
+(defun org-qmd-publish-to-qmd-remap (plist filename pub-dir)
   "Publish to markdown but remap urls"
   (let ((org-export-filter-link-functions (list 'org-qmd-remap-urls)))
     (org-qmd-publish-to-qmd plist filename pub-dir)))
@@ -353,14 +374,14 @@ Return output file name."
   (setq org-publish-project-alist
       '(("blog-posts"
          :base-directory "~/braindump/articles"
-         :publishing-function org-qmd-publish-to-qmd
-         :publishing-directory "~/repositories/misc/website/blog/posts"
+         :publishing-function org-qmd-publish-to-qmd-remap
+         :publishing-directory "~/repositories/web/blog/posts"
          :section-numbers nil
          :with-toc nil)
         ("blog-images"
          :base-directory "~/braindump/images"
          :base-extension "png\\|jpg"
-         :publishing-directory "~/repositories/misc/website/blog/images"
+         :publishing-directory "~/repositories/web/blog/assets"
          :publishing-function org-publish-attachment)
         ("blog" :components("blog-posts" "blog-images")))))
 

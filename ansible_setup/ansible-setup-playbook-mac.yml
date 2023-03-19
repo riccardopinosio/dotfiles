@@ -39,10 +39,12 @@
   tasks:
     - command: git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
-- name: zotero
+- name: cask packages
   hosts: localhost
-  tags: zotero
+  tags: cask
   tasks:
     - homebrew_cask:
-        name: zotero
+        name:
+          - zotero
+          - quarto
         state: present
