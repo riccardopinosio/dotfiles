@@ -330,15 +330,13 @@ Return output file's name."
     (org-export-to-file 'qmd outfile async subtreep visible-only)))
 
 (defun org-qmd-remap-urls (data backend info)
-"Remap the url for the image links"
-;; TODO: this needs to be fixed
-(if (string-match-p (regexp-quote "[img]") data)
-    (let* ((url (string-match ".*(\\(.*\\))" data))
-           (url-match (match-string 1 data))
-           (file-name (file-name-nondirectory url-match))
-           (remapped-file-name (concat "../images/" file-name)))
-      (replace-regexp-in-string "(.*)" (format "(%s)" remapped-file-name) data))
-    data))
+  "Remap the url for the image links"
+  (let* ((path (org-qmd-get-path-from-link data))
+         (extension (file-name-extension path))
+         (file-name (file-name-nondirectory path)))
+    (cond ((member extension '("png"))
+           (replace-regexp-in-string "(.*)" (format "(%s)" (concat "../assets/" file-name)) data))
+          (t data))))
 
 (defun org-qmd-publish-to-qmd (plist filename pub-dir)
   "Publish an org file to Markdown.
