@@ -233,11 +233,11 @@
 
 (setq blog-folder "~/repositories/misc/website/blog/")
 
-(defun org-qmd-format-tags (tags)
+(defun org-qmd-format-categories (categories)
   "format filetags for inclusion in qmd front-matter"
-  (let ((tags-list (split-string tags " ")))
-    (format "tags: %s"
-            (concat "[" (mapconcat 'identity tags-list ", ") "]"))))
+  (let ((category-list (split-string categories)))
+    (format "categories: %s"
+            (concat "[" (mapconcat 'identity category-list ", ") "]"))))
 
 (defun org-qmd-get-lang-name (lang)
   (cond ((string= lang "emacs-lisp") "commonlisp")
@@ -299,9 +299,9 @@ channel. Lifted from org-gfm."
                                             ":author"
                                             ":date"
                                             ":description"
-                                            ":filetags")))
+                                            ":category")))
          (front-matter-lines (mapcar (lambda (el)
-                                       (cond ((string= (car el) "filetags") (org-qmd-format-tags (cdr el)))
+                                       (cond ((string= (car el) "category") (org-qmd-format-categories (cdr el)))
                                              (t (format "%s: %s" (car el) (cdr el)))))
                                      front-matter-properties)))
     (concat "---\n" (mapconcat 'identity front-matter-lines "\n") "\n---\n" contents)))
@@ -367,8 +367,9 @@ Return output file name."
   :filters-alist '((:filter-parse-tree . org-md-separate-elements))
   :translate-alist '((inner-template . org-qmd-template)
                      (src-block . org-qmd-src-block)
-                     (link . org-qmd-link)
-                     ))
+                     (link . org-qmd-link))
+  :options-alist '((:category "CATEGORY" nil nil t)))
+
   (setq org-publish-project-alist
       '(("blog-posts"
          :base-directory "~/braindump/articles"
