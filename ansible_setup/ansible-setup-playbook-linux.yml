@@ -106,15 +106,22 @@
     - command: "usermod -aG docker {{ ansible_user }}"
     - shell: |
         systemctl stop docker
-        DOCKER_VOLS="/home/{{ ansible_user }}/docker/volumes"
-        EXEC_START="ExecStart=/usr/bin/dockerd --data-root $DOCKER_VOLS -H fd:// --containerd=/run/containerd/containerd.sock"
+        DOCKER_ROOT="{{ docker_root }}"
+        EXEC_START="ExecStart=/usr/bin/dockerd --data-root $DOCKER_ROOT -H fd:// --containerd=/run/containerd/containerd.sock"
         sudo sed -i "s|.*ExecStart.*|${EXEC_START}|" /lib/systemd/system/docker.service
         sudo systemctl daemon-reload
         sudo systemctl start docker
     - file:
-        path: "/home/{{ ansible_user }}/docker/volumes"
+        path: "{{ docker_root }}/volumes"
         state: directory
         recurse: true
         owner: "{{ ansible_user }}"
         mode: 0777
 
+- name: chezmoi
+  hosts: "{{ variable_host }}"
+  tags: chezmoi
+  vars_files:
+    - vars.yaml
+  tasks:
+    - shell: sh -c '$(curl -fsLS get.chezmoi.io)' --init --apply riccardopinosio
