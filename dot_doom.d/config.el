@@ -286,7 +286,15 @@ Return output file name."
 
 
 ;; OTHER PERSONAL FUNCTIONS
-;;
+
+(defun riccardo/export-org-roam-md ()
+  "useful function to export an org roam to markdown
+where the filename is the org note slug"
+  (interactive)
+  (let* ((filename (org-md-export-to-markdown))
+         (slug (car (last (split-string filename "-")))))
+    (rename-file filename (format "~/braindump/exports/%s" slug))))
+
 
 (defun riccardo/paste-excursion (tag)
   (interactive)
