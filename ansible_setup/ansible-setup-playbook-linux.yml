@@ -24,6 +24,7 @@
 - name: emacs
   hosts: "{{ variable_host }}"
   become: true
+  tags: emacs
   vars_files:
     - vars.yaml
   tasks:
@@ -44,6 +45,7 @@
 
 - name: doom. Only cloning, install is manual (~/.config/emacs/bin/doom install) as it's interactive!
   hosts: " {{variable_host}} "
+  tags: emacs
   vars_files:
     - vars.yaml
   tasks:
@@ -52,6 +54,7 @@
 
 - name: miniconda
   hosts: " {{variable_host}} "
+  tags: miniconda
   vars_files:
     - vars.yaml
   tasks:
@@ -60,6 +63,7 @@
 
 - name: install syncthing
   hosts: "{{ variable_host }}"
+  tags: syncthing
   vars_files:
     - vars.yaml
   become: true
@@ -78,7 +82,8 @@
   vars_files:
     - vars.yaml
   become: true
-  tags: docker
+  tags:
+    - docker
   tasks:
     - file:
         path: /etc/apt/keyrings
@@ -118,10 +123,36 @@
         owner: "{{ ansible_user }}"
         mode: 0777
 
-- name: chezmoi
+- name: docker group
   hosts: "{{ variable_host }}"
-  tags: chezmoi
   vars_files:
     - vars.yaml
+  become: true
+  tags:
+    - docker
+    - dockergroup
   tasks:
-    - shell: sh -c '$(curl -fsLS get.chezmoi.io)' --init --apply riccardopinosio
+    - group:
+        name: docker
+        state: present
+    - user:
+        name: '{{ ansible_user }}'
+        groups: docker
+        append: yes
+
+
+- hosts: " {{ variable_host }} "
+  tags: golang
+  vars_files:
+    - vars.yaml
+  roles:
+    - golang
+  tasks:
+      - name: Add to bash path
+        ansible.builtin.lineinfile:
+          path: ~/.bashrc
+          line: "export PATH=/opt/go/{{ goversion }}/bin:$PATH"
+      - name: Add to zsh path
+        ansible.builtin.lineinfile:
+          path: ~/.zshrc
+          line: "export PATH=/opt/go/{{ goversion }}/bin:$PATH"

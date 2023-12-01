@@ -1,0 +1,6 @@
+---
+roles:
+  - name: golang
+    src: https://github.com/gantsign/ansible-role-golang 
+    version: master
+    scm: git
