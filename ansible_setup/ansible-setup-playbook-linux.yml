@@ -28,7 +28,7 @@
   vars_files:
     - vars.yaml
   tasks:
-    - command: apt remove --autoremove emacs emacs-common
+    - command: apt remove -y --autoremove emacs emacs-common
     - apt_repository:
         repo: ppa:kelleyk/emacs
         state: present
